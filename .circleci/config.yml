@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/retrospectivex
+    docker:
+      - image: circleci/elixir:1.6.6
+        environment:
+          - MIX_ENV=ci
+      - image: postgres:9.5
+        environment:
+          - POSTGRES_USER=ubuntu
+          - POSTGRES_PASSWORD=
+          - POSTGRES_DB=circle_test
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-mix-build-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
+            - v1-mix-build-cache-{{ .Branch }}
+      - run: mix local.hex --force
+      - run: mix local.rebar --force
+      - run: mix do deps.get, compile --warnings-as-errors
+      - run: mix format --check-formatted
+      - run: mix do ecto.create, ecto.migrate
+      - run: mix test
+      - save_cache:
+          key: v1-mix-build-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
+          paths:
+            - "deps"
+            - "_build"
