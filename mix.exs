@@ -35,7 +35,7 @@ defmodule Retrospectivex.Mixfile do
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(:ci), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
@@ -56,7 +56,7 @@ defmodule Retrospectivex.Mixfile do
 
       # Authentication
       {:comeonin, "~> 4.1.1"},
-      {:bcrypt_elixir, "~> 0.12"},
+      {:bcrypt_elixir, "~> 1.0"},
       {:guardian, "~> 1.0"},
 
       # Code analysis
