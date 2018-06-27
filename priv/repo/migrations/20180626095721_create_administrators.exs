@@ -3,10 +3,10 @@ defmodule Retrospectivex.Repo.Migrations.CreateAdministrators do
 
   def change do
     create table(:administrators) do
-      add(:first_name, :string)
-      add(:last_name, :string)
       add(:email, :string)
       add(:encrypted_password, :string)
+      add(:first_name, :string)
+      add(:last_name, :string)
 
       timestamps()
     end

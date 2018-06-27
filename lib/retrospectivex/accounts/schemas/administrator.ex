@@ -5,9 +5,9 @@ defmodule Retrospectivex.Accounts.Schemas.Administrator do
 
   schema "administrators" do
     field(:email, :string)
+    field(:encrypted_password, :string)
     field(:first_name, :string)
     field(:last_name, :string)
-    field(:encrypted_password, :string)
     field(:password, :string, virtual: true)
 
     timestamps()
