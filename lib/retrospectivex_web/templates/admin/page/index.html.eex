@@ -1,0 +1,36 @@
+<h2><%= gettext("List of pages") %></h2>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"><%= gettext("Title") %></th>
+          <th scope="col"><%= gettext("Slug") %></th>
+          <th scope="col"><%= gettext("Status") %></th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+      <%= for page <- @pages do %>
+        <tr>
+          <th scope="row"><%= page.id %></th>
+          <td><%= page.title %></td>
+          <td><%= page.slug %></td>
+          <td><%= page.status %></td>
+
+          <td class="text-right">
+            <%= link gettext("Show"), to: admin_page_path(@conn, :show, page), class: "btn btn-success btn-md" %>
+            <%= link gettext("Edit"), to: admin_page_path(@conn, :edit, page), class: "btn btn-info btn-md" %>
+            <%= link gettext("Delete"), to: admin_page_path(@conn, :delete, page),
+              method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-md" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= link gettext("New page"), to: admin_page_path(@conn, :new), class: "btn btn-primary" %>
+  </div>
+</div>

@@ -24,18 +24,6 @@ defmodule RetrospectivexWeb.Router do
   end
 
   scope "/", RetrospectivexWeb do
-    # Application unauthenticated scope
-    scope "/" do
-      pipe_through([:browser, :browser_auth])
-
-      get("/", PageController, :index)
-
-      resources("/session", SessionController, only: [:new, :create])
-
-      # Log out resource
-      get("/logout", SessionController, :delete)
-    end
-
     # Admin scope
     scope "/admin", Admin, as: :admin do
       pipe_through([
@@ -47,6 +35,19 @@ defmodule RetrospectivexWeb.Router do
 
       resources("/", DashboardController, only: [:index])
       resources("/administrators", AdministratorController)
+      resources("/pages", PageController)
+    end
+
+    # Application unauthenticated scope
+    scope "/" do
+      pipe_through([:browser, :browser_auth])
+
+      resources("/session", SessionController, only: [:new, :create])
+
+      # Log out resource
+      get("/logout", SessionController, :delete)
+
+      resources("/", PageController, only: [:index, :show], param: "slug")
     end
   end
 end
