@@ -1,0 +1,36 @@
+<h2><%= gettext("List of administrators") %></h2>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"><%= gettext("First Name") %></th>
+          <th scope="col"><%= gettext("Last Name") %></th>
+          <th scope="col"><%= gettext("Email") %></th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+      <%= for administrator <- @administrators do %>
+        <tr>
+          <th scope="row"><%= administrator.id %></th>
+          <td><%= administrator.first_name %></td>
+          <td><%= administrator.last_name %></td>
+          <td><%= administrator.email %></td>
+
+          <td class="text-right">
+            <%= link gettext("Show"), to: admin_administrator_path(@conn, :show, administrator), class: "btn btn-success btn-md" %>
+            <%= link gettext("Edit"), to: admin_administrator_path(@conn, :edit, administrator), class: "btn btn-info btn-md" %>
+            <%= link gettext("Delete"), to: admin_administrator_path(@conn, :delete, administrator),
+              method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-md" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= link gettext("New administrator"), to: admin_administrator_path(@conn, :new), class: "btn btn-primary" %>
+  </div>
+</div>
