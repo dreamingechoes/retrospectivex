@@ -1,6 +1,6 @@
 # Retrospectivex
 
-There's an example user in the seeds to use for testing purposes:
+There's an example administrator in the seeds to use for testing purposes:
 
 - **email**: example@example.com
 - **password**: 123456
