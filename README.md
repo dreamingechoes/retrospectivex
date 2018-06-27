@@ -1,5 +1,9 @@
 # Retrospectivex
 
+:warning: **Work in progress** :warning:
+
+Phoenix application to create retrospective boards.
+
 There's an example administrator in the seeds to use for testing purposes:
 
 - **email**: example@example.com
