@@ -11,7 +11,7 @@ defmodule Retrospectivex.Application do
       # Start the Ecto repository
       supervisor(Retrospectivex.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(RetrospectivexWeb.Endpoint, []),
+      supervisor(RetrospectivexWeb.Endpoint, [])
       # Start your own worker by calling: Retrospectivex.Worker.start_link(arg1, arg2, arg3)
       # worker(Retrospectivex.Worker, [arg1, arg2, arg3]),
     ]
