@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"><%= gettext("Dashboard") %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card border-info mb-3">
+      <div class="card-body text-info">
+        <h4 class="card-title"><%= gettext("Administrators (%{administrators})", administrators: @administrators) %></h4>
+        <p class="card-text"><%= gettext("Admin project administrators.") %></p>
+      </div>
+      <div class="card-footer bg-transparent border-info">
+        <%= link gettext("Go to admin »"), to: admin_administrator_path(@conn, :index) %>
+      </div>
+    </div>
+  </div>
+</div>
