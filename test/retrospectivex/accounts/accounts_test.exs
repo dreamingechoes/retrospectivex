@@ -4,7 +4,7 @@ defmodule Retrospectivex.AccountsTest do
   alias Retrospectivex.Accounts
 
   describe "administrators" do
-    alias Retrospectivex.Accounts.Administrator
+    alias Retrospectivex.Accounts.Schemas.Administrator
 
     @valid_attrs %{
       email: "some email",

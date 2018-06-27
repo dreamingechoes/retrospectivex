@@ -2,7 +2,7 @@ defmodule RetrospectivexWeb.Admin.AdministratorController do
   use RetrospectivexWeb, :controller
 
   alias Retrospectivex.Accounts
-  alias Retrospectivex.Accounts.Administrator
+  alias Retrospectivex.Accounts.Schemas.Administrator
 
   def index(conn, _params) do
     administrators = Accounts.list_administrators()

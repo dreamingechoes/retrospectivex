@@ -1,5 +1,6 @@
-defmodule Retrospectivex.Accounts.Administrator do
+defmodule Retrospectivex.Accounts.Schemas.Administrator do
   use Ecto.Schema
+
   import Ecto.Changeset
 
   schema "administrators" do

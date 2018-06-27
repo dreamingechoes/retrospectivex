@@ -1,7 +1,7 @@
 defmodule RetrospectivexWeb.Admin.DashboardController do
   use RetrospectivexWeb, :controller
 
-  alias Retrospectivex.Accounts.Administrator
+  alias Retrospectivex.Accounts.Schemas.Administrator
   alias Retrospectivex.Repo
 
   def index(conn, _params) do
