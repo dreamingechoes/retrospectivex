@@ -1,11 +1,9 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Retrospectivex.Repo.insert!(%Retrospectivex.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Retrospectivex.Accounts
+
+# Create a default administrator
+Accounts.create_administrator(%{
+  email: "example@example.com",
+  password: "123456",
+  first_name: "Example",
+  last_name: "Example"
+})
