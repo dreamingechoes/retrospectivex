@@ -49,10 +49,12 @@ defmodule Retrospectivex.Mixfile do
       {:phoenix_ecto, "~> 3.3.0"},
       {:postgrex, ">= 0.13.3"},
       {:phoenix_pubsub, "~> 1.0.2"},
+      {:ecto_enum, "~> 1.0"},
 
       # Frontend
       {:phoenix_html, "~> 2.10.4"},
       {:phoenix_live_reload, "~> 1.1.1", only: :dev},
+      {:earmark, "~> 1.2.5"},
 
       # Authentication
       {:comeonin, "~> 4.1.1"},
