@@ -8,7 +8,7 @@ defmodule Retrospectivex.Accounts do
   # Administrator API
   defdelegate list_administrators, to: AdministratorManager
   defdelegate get_administrator!(id), to: AdministratorManager
-  defdelegate get_administrator_by_email(email), to: AdministratorManager
+  defdelegate get_administrator_by_email!(email), to: AdministratorManager
   defdelegate create_administrator(attrs), to: AdministratorManager
 
   defdelegate update_administrator(administrator, attrs),
