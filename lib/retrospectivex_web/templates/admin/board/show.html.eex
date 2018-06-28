@@ -1,0 +1,35 @@
+<h2><%= gettext("Show board") %></h2>
+
+<div class="card">
+  <div class="card-body">
+    <ul>
+      <li>
+        <strong><%= gettext("Title:") %></strong>
+        <%= @board.title %>
+      </li>
+
+      <li>
+        <strong><%= gettext("Slug:") %></strong>
+        <%= @board.slug %>
+      </li>
+
+      <li>
+        <strong><%= gettext("Status:") %></strong>
+        <%= @board.status %>
+      </li>
+
+      <li>
+        <strong><%= gettext("Description:") %></strong>
+        <%= @board.description %>
+      </li>
+
+      <li>
+        <strong><%= gettext("UUID:") %></strong>
+        <%= @board.uuid %>
+      </li>
+    </ul>
+
+    <%= link gettext("Edit"), to: admin_board_path(@conn, :edit, @board), class: "btn btn-primary" %>
+    <%= link gettext("Back"), to: admin_board_path(@conn, :index), class: "btn btn-light" %>
+  </div>
+</div>

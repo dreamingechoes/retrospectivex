@@ -20,6 +20,18 @@
   <div class="col-lg-4">
     <div class="card border-info mb-3">
       <div class="card-body text-info">
+        <h4 class="card-title"><%= gettext("Boards (%{boards})", boards: @boards) %></h4>
+        <p class="card-text"><%= gettext("Admin project boards.") %></p>
+      </div>
+      <div class="card-footer bg-transparent border-info">
+        <%= link gettext("Go to admin »"), to: admin_board_path(@conn, :index) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card border-info mb-3">
+      <div class="card-body text-info">
         <h4 class="card-title"><%= gettext("Pages (%{pages})", pages: @pages) %></h4>
         <p class="card-text"><%= gettext("Admin project pages.") %></p>
       </div>

@@ -1,0 +1,36 @@
+<h2><%= gettext("List of boards") %></h2>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"><%= gettext("Title") %></th>
+          <th scope="col"><%= gettext("Slug") %></th>
+          <th scope="col"><%= gettext("Status") %></th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+      <%= for board <- @boards do %>
+        <tr>
+          <th scope="row"><%= board.id %></th>
+          <td><%= board.title %></td>
+          <td><%= board.slug %></td>
+          <td><%= board.status %></td>
+
+          <td class="text-right">
+            <%= link gettext("Show"), to: admin_board_path(@conn, :show, board), class: "btn btn-success btn-md" %>
+            <%= link gettext("Edit"), to: admin_board_path(@conn, :edit, board), class: "btn btn-info btn-md" %>
+            <%= link gettext("Delete"), to: admin_board_path(@conn, :delete, board),
+              method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-danger btn-md" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= link gettext("New board"), to: admin_board_path(@conn, :new), class: "btn btn-primary" %>
+  </div>
+</div>

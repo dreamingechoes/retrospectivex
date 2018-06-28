@@ -1,0 +1,32 @@
+<h2>Listing Boards</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Slug</th>
+      <th>Description</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for board <- @boards do %>
+    <tr>
+      <td><%= board.title %></td>
+      <td><%= board.slug %></td>
+      <td><%= board.description %></td>
+      <td><%= board.status %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: board_path(@conn, :show, board), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: board_path(@conn, :edit, board), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: board_path(@conn, :delete, board), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Board", to: board_path(@conn, :new) %></span>
