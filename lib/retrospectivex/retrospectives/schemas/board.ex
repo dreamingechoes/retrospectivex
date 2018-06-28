@@ -1,4 +1,4 @@
-defmodule Retrospectivex.Retrospectives.Board do
+defmodule Retrospectivex.Retrospectives.Schemas.Board do
   use Ecto.Schema
 
   import Ecto.Changeset

@@ -2,7 +2,7 @@ defmodule RetrospectivexWeb.Admin.BoardController do
   use RetrospectivexWeb, :controller
 
   alias Retrospectivex.Retrospectives
-  alias Retrospectivex.Retrospectives.Board
+  alias Retrospectivex.Retrospectives.Schemas.Board
 
   def index(conn, _params) do
     boards = Retrospectives.list_boards()
