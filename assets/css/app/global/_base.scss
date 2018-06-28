@@ -1,4 +1,19 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
   padding-top: 54px;
   font-size: 14px;
 }
@@ -14,6 +29,8 @@ footer {
   height: 60px;
   line-height: 60px;
   background-color: #555;
+  position: absolute;
+  bottom: 0;
   a, a:hover {
     color: #fff;
     text-decoration: underline;
