@@ -1,9 +1,9 @@
-defmodule Retrospectivex.Contents.Page do
+defmodule Retrospectivex.Contents.Schemas.Page do
   use Ecto.Schema
 
   import Ecto.Changeset
 
-  alias Retrospectivex.Contents.SeoInfo
+  alias Retrospectivex.Contents.Schemas.Embedded.SeoInfo
 
   schema "pages" do
     field(:body, :string)

@@ -1,4 +1,4 @@
-defmodule Retrospectivex.Contents.SeoInfo do
+defmodule Retrospectivex.Contents.Schemas.Embedded.SeoInfo do
   use Ecto.Schema
 
   import Ecto.Changeset

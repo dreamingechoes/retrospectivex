@@ -2,7 +2,7 @@ defmodule RetrospectivexWeb.Admin.PageController do
   use RetrospectivexWeb, :controller
 
   alias Retrospectivex.Contents
-  alias Retrospectivex.Contents.Page
+  alias Retrospectivex.Contents.Schemas.Page
 
   def index(conn, _params) do
     pages = Contents.list_pages()
