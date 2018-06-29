@@ -34,6 +34,23 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board!(id), do: Repo.get!(Board, id)
 
   @doc """
+  Gets a single board by slug and uuid.
+
+  Raises `Ecto.NoResultsError` if the Board does not exist.
+
+  ## Examples
+
+      iex> get_board_by_slug_and_uuid!("some-slug", "some-uuid")
+      %Board{}
+
+      iex> get_board_by_slug_and_uuid!("some-slug", "some-uuid")
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_board_by_slug_and_uuid!(slug, uuid),
+    do: Repo.get_by!(Board, slug: slug, uuid: uuid)
+
+  @doc """
   Creates a board.
 
   ## Examples
