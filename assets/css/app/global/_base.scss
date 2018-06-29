@@ -14,13 +14,13 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-  padding-top: 54px;
+  padding-top: 68px;
   font-size: 14px;
 }
 
 @media (min-width: 992px) {
   body {
-    padding-top: 56px;
+    padding-top: 68px;
   }
 }
 
@@ -42,4 +42,8 @@ footer {
 
 .jumbotron {
   margin-top: 1.5rem !important;
+}
+
+.nav-item-icon {
+  font-size: 1.4rem;
 }

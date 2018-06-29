@@ -1,28 +1,52 @@
-<h2>Show Board</h2>
+<div class="jumbotron board-jumbotron">
+  <div class="container">
+    <h1 class="page-header"><%= @board.title %></h1>
+    <p><%= raw(Earmark.as_html!(@board.description)) %></p>
+  </div>
+</div>
 
-<ul>
+</hr>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @board.title %>
-  </li>
+<div class="row board-columns">
+  <div class="col-lg-4">
+    <ul class="list-group">
+      <li class="list-group-item bg-success text-white disable">
+        <%= gettext("What Went Well") %>
+        <%= link(raw("<i class='fa fa-plus'></i>"), to: "#", class: "btn btn-sm btn-light pull-right",
+          alt: gettext("Add new card.")) %>
+      </li>
+      <li class="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
+      <li class="list-group-item list-group-item-action">Morbi leo risus</li>
+      <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+    </ul>
+  </div>
 
-  <li>
-    <strong>Slug:</strong>
-    <%= @board.slug %>
-  </li>
+  <div class="col-lg-4">
+    <ul class="list-group">
+      <li class="list-group-item bg-danger text-white">
+        <%= gettext("What Can Be Improved") %>
+        <%= link(raw("<i class='fa fa-plus'></i>"), to: "#", class: "btn btn-sm btn-light pull-right",
+          alt: gettext("Add new card.")) %>
+      </li>
+      <li class="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
+      <li class="list-group-item list-group-item-action">Morbi leo risus</li>
+      <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+    </ul>
+  </div>
 
-  <li>
-    <strong>Description:</strong>
-    <%= @board.description %>
-  </li>
-
-  <li>
-    <strong>Status:</strong>
-    <%= @board.status %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: board_path(@conn, :edit, @board) %></span>
-<span><%= link "Back", to: board_path(@conn, :index) %></span>
+  <div class="col-lg-4">
+    <ul class="list-group">
+      <li class="list-group-item bg-primary text-white">
+        <%= gettext("Action Items") %>
+        <%= link(raw("<i class='fa fa-plus'></i>"), to: "#", class: "btn btn-sm btn-light pull-right",
+          alt: gettext("Add new card.")) %>
+      </li>
+      <li class="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
+      <li class="list-group-item list-group-item-action">Morbi leo risus</li>
+      <li class="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+      <li class="list-group-item list-group-item-action">Vestibulum at eros</li>
+    </ul>
+  </div>
+</div>
