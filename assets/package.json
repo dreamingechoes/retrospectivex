@@ -8,6 +8,7 @@
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
+    "frankt": "file:../deps/frankt",
     "popper.js": "1.14.3",
     "bootstrap": "4.1.1",
     "jquery": "3.3.1",

@@ -23,6 +23,7 @@ import "phoenix_html"
 // Vendor
 import $ from "jquery"
 import Popper from "popper.js"
+import * as Frankt from 'frankt'
 
 import "popper.js/dist/umd/popper"
 import "bootstrap/dist/js/bootstrap"
