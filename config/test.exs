@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :retrospectivex, Retrospectivex.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "retrospectivex_test",
-  hostname: "localhost",
+  hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox
