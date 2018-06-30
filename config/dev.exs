@@ -62,3 +62,5 @@ config :retrospectivex, Retrospectivex.Repo,
   database: "retrospectivex_dev",
   hostname: "db",
   pool_size: 10
+
+config :appsignal, :config, active: true
