@@ -65,6 +65,7 @@ defmodule Retrospectivex.Mixfile do
       # Code analysis
       {:credo, "~> 0.9.0", only: [:dev, :test]},
       {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false},
+      {:appsignal, "~> 1.0"},
 
       # Code documentation
       {:ex_doc, "~> 0.16.4", only: :dev, runtime: false},
