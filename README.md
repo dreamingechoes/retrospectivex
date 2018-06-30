@@ -10,11 +10,6 @@
 
 Phoenix application to create retrospective boards.
 
-There's an example administrator in the seeds to use for testing purposes:
-
-- **email**: example@example.com
-- **password**: 123456
-
 ## Setup development environment with Docker
 
 This project is Docker friendly from day one. To start working on it:
