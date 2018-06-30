@@ -1,6 +1,7 @@
 # Retrospectivex
 
 [![CircleCI](https://circleci.com/gh/dreamingechoes/retrospectivex.svg?style=shield)](https://circleci.com/gh/dreamingechoes/retrospectivex)
+[![codecov](https://codecov.io/gh/dreamingechoes/retrospectivex/branch/master/graph/badge.svg)](https://codecov.io/gh/dreamingechoes/retrospectivex)
 [![Ebert](https://ebertapp.io/github/dreamingechoes/retrospectivex.svg)](https://ebertapp.io/github/dreamingechoes/retrospectivex)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/dreamingechoes/retrospectivex/blob/master/LICENSE)
 
