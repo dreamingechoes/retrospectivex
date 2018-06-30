@@ -1,5 +1,7 @@
 # Retrospectivex
 
+[![CircleCI](https://circleci.com/gh/dreamingechoes/retrospectivex.svg?style=shield)](https://circleci.com/gh/dreamingechoes/retrospectivex)
+
 :warning: **Work in progress** :warning:
 
 Phoenix application to create retrospective boards.
