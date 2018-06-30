@@ -1,6 +1,7 @@
 # Retrospectivex
 
 [![CircleCI](https://circleci.com/gh/dreamingechoes/retrospectivex.svg?style=shield)](https://circleci.com/gh/dreamingechoes/retrospectivex)
+[![Ebert](https://ebertapp.io/github/dreamingechoes/retrospectivex.svg)](https://ebertapp.io/github/dreamingechoes/retrospectivex)
 
 :warning: **Work in progress** :warning:
 
