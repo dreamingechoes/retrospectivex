@@ -72,6 +72,7 @@ defmodule Retrospectivex.Mixfile do
 
       # Random
       {:timex, "~> 3.2.1"},
+      {:recaptcha, "~> 2.3"},
 
       # Testing and seeding data
       {:faker, "~> 0.9.0"},
