@@ -14,15 +14,28 @@ defmodule RetrospectivexWeb.Admin.BoardController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"board" => board_params}) do
-    case Retrospectives.create_board(board_params) do
-      {:ok, board} ->
-        conn
-        |> put_flash(:info, "Board created successfully.")
-        |> redirect(to: admin_board_path(conn, :show, board))
+  def create(conn, %{
+        "board" => board_params,
+        "g-recaptcha-response" => g_recaptcha_response
+      }) do
+    case Recaptcha.verify(g_recaptcha_response) do
+      {:ok, _response} ->
+        case Retrospectives.create_board(board_params) do
+          {:ok, board} ->
+            conn
+            |> put_flash(:info, "Board created successfully.")
+            |> redirect(to: admin_board_path(conn, :show, board))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+          {:error, %Ecto.Changeset{} = changeset} ->
+            render(conn, "new.html", changeset: changeset)
+        end
+
+      {:error, _error} ->
+        render(
+          conn,
+          "new.html",
+          changeset: Retrospectives.change_board(%Board{})
+        )
     end
   end
 
