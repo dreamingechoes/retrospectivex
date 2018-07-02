@@ -64,3 +64,5 @@ config :retrospectivex, Retrospectivex.Repo,
   pool_size: 10
 
 config :appsignal, :config, active: true
+
+import_config "#{Mix.env()}.secret.exs"
