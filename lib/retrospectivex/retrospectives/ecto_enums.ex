@@ -1,3 +1,3 @@
 import EctoEnum
 
-defenum(BoardStatusEnum, draft: 0, opened: 1, closed: 2)
+defenum(BoardStatusEnum, opened: 0, closed: 1)
