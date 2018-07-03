@@ -1,0 +1,23 @@
+<h2>Show Card</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @card.title %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @card.body %>
+  </li>
+
+  <li>
+    <strong>Votes:</strong>
+    <%= @card.votes %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: card_path(@conn, :edit, @card) %></span>
+<span><%= link "Back", to: card_path(@conn, :index) %></span>

@@ -4,7 +4,7 @@ defmodule Retrospectivex.ContentsTest do
   alias Retrospectivex.Contents
 
   describe "pages" do
-    alias Retrospectivex.Contents.Page
+    alias Retrospectivex.Contents.Schemas.Page
 
     @valid_attrs %{
       body: "some body",

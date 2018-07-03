@@ -1,0 +1,5 @@
+<h2>Edit Card</h2>
+
+<%= render "form.html", Map.put(assigns, :action, card_path(@conn, :update, @card)) %>
+
+<span><%= link "Back", to: card_path(@conn, :index) %></span>

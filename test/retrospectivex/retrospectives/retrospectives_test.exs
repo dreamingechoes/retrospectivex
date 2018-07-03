@@ -4,7 +4,7 @@ defmodule Retrospectivex.RetrospectivesTest do
   alias Retrospectivex.Retrospectives
 
   describe "boards" do
-    alias Retrospectivex.Retrospectives.Board
+    alias Retrospectivex.Retrospectives.Schemas.Board
 
     @valid_attrs %{
       description: "some description",
@@ -83,6 +83,81 @@ defmodule Retrospectivex.RetrospectivesTest do
     test "change_board/1 returns a board changeset" do
       board = board_fixture()
       assert %Ecto.Changeset{} = Retrospectives.change_board(board)
+    end
+  end
+
+  describe "cards" do
+    alias Retrospectivex.Retrospectives.Card
+
+    @valid_attrs %{body: "some body", title: "some title", votes: 42}
+    @update_attrs %{
+      body: "some updated body",
+      title: "some updated title",
+      votes: 43
+    }
+    @invalid_attrs %{body: nil, title: nil, votes: nil}
+
+    def card_fixture(attrs \\ %{}) do
+      {:ok, card} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Retrospectives.create_card()
+
+      card
+    end
+
+    test "list_cards/0 returns all cards" do
+      card = card_fixture()
+      assert Retrospectives.list_cards() == [card]
+    end
+
+    test "get_card!/1 returns the card with given id" do
+      card = card_fixture()
+      assert Retrospectives.get_card!(card.id) == card
+    end
+
+    test "create_card/1 with valid data creates a card" do
+      assert {:ok, %Card{} = card} = Retrospectives.create_card(@valid_attrs)
+      assert card.body == "some body"
+      assert card.title == "some title"
+      assert card.votes == 42
+    end
+
+    test "create_card/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} =
+               Retrospectives.create_card(@invalid_attrs)
+    end
+
+    test "update_card/2 with valid data updates the card" do
+      card = card_fixture()
+      assert {:ok, card} = Retrospectives.update_card(card, @update_attrs)
+      assert %Card{} = card
+      assert card.body == "some updated body"
+      assert card.title == "some updated title"
+      assert card.votes == 43
+    end
+
+    test "update_card/2 with invalid data returns error changeset" do
+      card = card_fixture()
+
+      assert {:error, %Ecto.Changeset{}} =
+               Retrospectives.update_card(card, @invalid_attrs)
+
+      assert card == Retrospectives.get_card!(card.id)
+    end
+
+    test "delete_card/1 deletes the card" do
+      card = card_fixture()
+      assert {:ok, %Card{}} = Retrospectives.delete_card(card)
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Retrospectives.get_card!(card.id)
+      end
+    end
+
+    test "change_card/1 returns a card changeset" do
+      card = card_fixture()
+      assert %Ecto.Changeset{} = Retrospectives.change_card(card)
     end
   end
 end

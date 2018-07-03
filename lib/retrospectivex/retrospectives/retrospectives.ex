@@ -4,13 +4,22 @@ defmodule Retrospectivex.Retrospectives do
   """
 
   alias Retrospectivex.Retrospectives.Managers.Board, as: BoardManager
+  alias Retrospectivex.Retrospectives.Managers.Card, as: CardManager
 
   # Board API
-  defdelegate list_boards, to: BoardManager
-  defdelegate get_board!(id), to: BoardManager
-  defdelegate get_board_by_slug_and_uuid!(slug, uuid), to: BoardManager
-  defdelegate create_board(attrs), to: BoardManager
-  defdelegate update_board(board, attrs), to: BoardManager
-  defdelegate delete_board(board), to: BoardManager
   defdelegate change_board(board), to: BoardManager
+  defdelegate create_board(attrs), to: BoardManager
+  defdelegate delete_board(board), to: BoardManager
+  defdelegate get_board_by_slug_and_uuid!(slug, uuid), to: BoardManager
+  defdelegate get_board!(id), to: BoardManager
+  defdelegate list_boards, to: BoardManager
+  defdelegate update_board(board, attrs), to: BoardManager
+
+  # Card API
+  defdelegate change_card(card), to: CardManager
+  defdelegate create_card(attrs), to: CardManager
+  defdelegate delete_card(card), to: CardManager
+  defdelegate get_card!(id), to: CardManager
+  defdelegate list_cards, to: CardManager
+  defdelegate update_card(card, attrs), to: CardManager
 end

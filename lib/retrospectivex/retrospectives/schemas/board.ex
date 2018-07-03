@@ -3,6 +3,8 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
 
   import Ecto.Changeset
 
+  alias Retrospectivex.Retrospectives.Schemas.Card
+
   schema "boards" do
     field(:description, :string)
     field(:slug, :string)
@@ -11,6 +13,9 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
     field(:uuid, :binary_id)
 
     timestamps()
+
+    has_many(:what_went_well, Card, on_delete: :delete_all)
+    has_many(:what_can_be_improved, Card, on_delete: :delete_all)
   end
 
   @doc false
