@@ -55,7 +55,8 @@ defmodule Retrospectivex.Mixfile do
       {:phoenix_html, "~> 2.10.4"},
       {:phoenix_live_reload, "~> 1.1.1", only: :dev},
       {:earmark, "~> 1.2.5"},
-      {:frankt, git: "git@github.com:acutario/frankt.git", branch: "master"},
+      {:frankt,
+       git: "https://github.com/acutario/frankt.git", branch: "master"},
 
       # Authentication
       {:comeonin, "~> 4.1.1"},
