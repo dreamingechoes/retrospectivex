@@ -2,7 +2,7 @@ defmodule RetrospectivexWeb.CardController do
   use RetrospectivexWeb, :controller
 
   alias Retrospectivex.Retrospectives
-  alias Retrospectivex.Retrospectives.Card
+  alias Retrospectivex.Retrospectives.Schemas.Card
 
   def index(conn, _params) do
     cards = Retrospectives.list_cards()
