@@ -1,8 +1,14 @@
 defmodule RetrospectivexWeb.UserSocket do
   use Phoenix.Socket
 
+  alias Retrospectivex.Accounts
+  alias Retrospectivex.Accounts.Schemas.Administrator
+
+  # Two weeks in seconds
+  @max_age 1_209_600
+
   ## Channels
-  # channel "room:*", RetrospectivexWeb.RoomChannel
+  channel("frankt:*", RetrospectivexWeb.FranktChannel)
 
   ## Transports
   transport(:websocket, Phoenix.Transports.WebSocket)
@@ -19,8 +25,25 @@ defmodule RetrospectivexWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+  def connect(%{"administrator_token" => administrator_token}, socket) do
+    with {:ok, administrator_id} <-
+           Phoenix.Token.verify(
+             socket,
+             "administrator socket",
+             administrator_token,
+             max_age: @max_age
+           ),
+         %Administrator{} = current_administrator <-
+           Accounts.get_administrator!(administrator_id) do
+      socket =
+        socket
+        |> assign(:current_admin, current_administrator)
+        |> assign(:conn, %Plug.Conn{})
+
+      {:ok, assign(socket, :conn, %Plug.Conn{assigns: socket.assigns})}
+    else
+      _ -> :error
+    end
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
