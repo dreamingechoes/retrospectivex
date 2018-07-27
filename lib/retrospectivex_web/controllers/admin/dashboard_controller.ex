@@ -3,8 +3,8 @@ defmodule RetrospectivexWeb.Admin.DashboardController do
 
   alias Retrospectivex.Accounts.Schemas.Administrator
   alias Retrospectivex.Contents.Schemas.Page
-  alias Retrospectivex.Retrospectives.Schemas.Board
   alias Retrospectivex.Repo
+  alias Retrospectivex.Retrospectives.Schemas.Board
 
   def index(conn, _params) do
     with administrators <- Repo.aggregate(Administrator, :count, :id),
