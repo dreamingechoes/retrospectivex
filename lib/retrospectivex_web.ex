@@ -59,6 +59,20 @@ defmodule RetrospectivexWeb do
     end
   end
 
+  def frankt do
+    quote do
+      import Ecto
+      import Ecto.Query
+      import Phoenix.Channel
+      import Phoenix.HTML, only: [safe_to_string: 1]
+      import Phoenix.HTML.FormData, only: [to_form: 2]
+      import RetrospectivexWeb.Frankt
+
+      alias Phoenix.View
+      alias Retrospectivex.Repo
+    end
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """
