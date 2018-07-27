@@ -1,4 +1,4 @@
-defmodule Retrospectivex.Retrospectives.Managers.Board do
+defmodule Retrospectivex.Retrospectives.Managers.Card do
   import Ecto.Query, warn: false
 
   alias Retrospectivex.Repo
