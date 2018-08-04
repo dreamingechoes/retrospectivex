@@ -2,7 +2,8 @@
 $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
 @import "font-awesome/scss/font-awesome";
 @import "bootstrap/scss/bootstrap";
-@import "codemirror/theme/codemirror";
+@import "~codemirror/lib/codemirror";
+@import "~codemirror/theme/3024-day";
 
 // Styles
 @import "global/_base.scss";
