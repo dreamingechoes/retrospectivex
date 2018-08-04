@@ -25,7 +25,7 @@
 
           <div class="form-group">
             <%= label f, :body, class: "control-label" %>
-            <%= textarea f, :body, class: "form-control", rows: 10, required: true %>
+            <%= textarea f, :body, class: "form-control code", rows: 10, required: true %>
             <%= error_tag f, :body %>
           </div>
         </div>

@@ -6,6 +6,7 @@
     "watch": "webpack --mode=development --watch --color"
   },
   "dependencies": {
+    "codemirror": "5.39.2",
     "bootstrap": "4.1.1",
     "font-awesome": "4.7.0",
     "frankt": "file:../deps/frankt",
@@ -13,7 +14,8 @@
     "phoenix_html": "file:../deps/phoenix_html",
     "phoenix": "file:../deps/phoenix",
     "popper.js": "1.14.3",
-    "sass-brunch": "2.10.4"
+    "sass-brunch": "2.10.4",
+    "simplemde": ""
   },
   "devDependencies": {
     "ajv": "^6.5.2",
