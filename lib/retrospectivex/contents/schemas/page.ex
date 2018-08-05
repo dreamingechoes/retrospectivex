@@ -20,7 +20,7 @@ defmodule Retrospectivex.Contents.Schemas.Page do
   def changeset(page, attrs) do
     page
     |> cast(attrs, [:title, :slug, :status, :body])
-    |> validate_required([:title, :body])
+    |> validate_required([:title])
     |> unique_constraint(:title)
     |> cast_embed(:seo_info)
     |> generate_slug()
