@@ -1,0 +1,3 @@
+<h2><%= gettext("New board") %></h2>
+
+<%= render "form.html", Map.put(assigns, :action, board_path(@conn, :create)) %>
