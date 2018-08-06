@@ -2,6 +2,20 @@
 
 <div class="card">
   <div class="card-body">
+   <div class="container">
+      <div class="row">
+        <div class="col">
+          <%= raw(Earmark.as_html!(@page.body)) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="card">
+  <div class="card-body">
     <ul>
       <li>
         <strong><%= gettext("Title:") %></strong>
@@ -17,13 +31,10 @@
         <strong><%= gettext("Status:") %></strong>
         <%= @page.status %>
       </li>
-
-      <li>
-        <strong><%= gettext("Body:") %></strong>
-        <%= @page.body %>
-      </li>
     </ul>
+  </div>
 
+  <div class="card-footer">
     <%= link gettext("Edit"), to: admin_page_path(@conn, :edit, @page), class: "btn btn-primary" %>
     <%= link gettext("Back"), to: admin_page_path(@conn, :index), class: "btn btn-light" %>
   </div>
