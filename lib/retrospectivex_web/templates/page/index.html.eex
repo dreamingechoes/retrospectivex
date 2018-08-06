@@ -1,6 +1,4 @@
-<div class="jumbotron">
-  <h1 class="display-4"><%= gettext("Hello from Retrospectivex!") %></h1>
-  <p class="lead">
-    <%= gettext("To see some information, go to the admin section.") %>
-  </p>
-</div>
+<h1 class="display-4"><%= gettext("Hello from Retrospectivex!") %></h1>
+<p class="lead">
+  <%= gettext("To see some information, go to the admin section.") %>
+</p>
