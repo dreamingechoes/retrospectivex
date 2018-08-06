@@ -1,6 +1,6 @@
 <h2><%= gettext("List of administrators") %></h2>
 
-<div class="card">
+<div class="card index">
   <div class="card-body">
     <table class="table table-striped">
       <thead>
@@ -30,7 +30,9 @@
       <% end %>
       </tbody>
     </table>
+  </div>
 
+  <div class="card-footer">
     <%= link gettext("New administrator"), to: admin_administrator_path(@conn, :new), class: "btn btn-primary" %>
   </div>
 </div>
