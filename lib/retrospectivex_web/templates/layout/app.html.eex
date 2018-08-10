@@ -12,11 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf" content="<%= Plug.CSRFProtection.get_csrf_token() %>">
-    
-    <%= if @conn.assigns.current_admin do %>
-      <meta name="channel" content="<%= FranktChannel.topic_name(@conn.assigns.current_admin.id) %>">
-      <meta name="administrator_token" content="<%= current_admin_token(@conn) %>">
-    <% end %>
+    <meta name="channel" content="frankt">
 
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
