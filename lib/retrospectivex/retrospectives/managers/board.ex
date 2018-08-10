@@ -47,8 +47,11 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
       ** (Ecto.NoResultsError)
 
   """
-  def get_board_by_slug_and_uuid!(slug, uuid),
-    do: Repo.get_by!(Board, slug: slug, uuid: uuid)
+  def get_board_by_slug_and_uuid!(slug, uuid) do
+    Board
+    |> Repo.get_by!(slug: slug, uuid: uuid)
+    |> Repo.preload([:what_went_well, :what_can_be_improved])
+  end
 
   @doc """
   Creates a board.
