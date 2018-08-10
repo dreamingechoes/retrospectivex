@@ -70,6 +70,7 @@ defmodule RetrospectivexWeb do
 
       alias Phoenix.View
       alias Retrospectivex.Repo
+      alias RetrospectivexWeb.Router.Helpers, as: Routes
     end
   end
 
