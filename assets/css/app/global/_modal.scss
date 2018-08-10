@@ -1,0 +1,86 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 10000;
+  overflow-x: hidden;
+  opacity: 0;
+
+  // Avoid tables to overflow modal div
+  table {
+    max-width: 100%;
+    table-layout: fixed;
+  }
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(#424954, 0.9);
+  z-index: 11000;
+}
+
+.modal-viewport {
+  display: flex;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 12000;
+  overflow-x: hidden;
+}
+
+.modal-dialog {
+  position: relative;
+  margin: auto;
+  padding: 32px 0;
+  z-index: 13000;
+}
+
+.modal-content {
+  min-width: 480px;
+  max-width: 1023px;
+  padding: 24px;
+  z-index: 14000;
+  background: #FFF;
+  border-radius: 4px;
+  box-shadow: 0 2px 29px rgba(0, 0, 0, 0.42);
+}
+
+.modal-header,
+.modal-footer {
+  flex: 0 0 auto;
+}
+
+.modal-footer {
+  display: flex;
+  background: #fafafa;
+  padding: 24px;
+  border-radius: 0 0 4px 4px;
+  margin: 0 -24px -24px;
+  text-align: right;
+  .vertical-row,
+  .row {
+    width: 100%;
+  }
+  > * {
+    margin-left: 16px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &.pull-left {
+      margin-left: 0;
+    }
+  }
+  .button-link {
+    color: #656565;
+    &:hover {
+      color: #303030;
+    }
+  }
+}
+
+.modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+}
