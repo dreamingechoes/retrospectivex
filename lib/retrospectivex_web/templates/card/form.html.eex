@@ -1,9 +1,11 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, nil, [as: "card_params", id: "card-form"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
+
+  <%= hidden_input f, :board_id , class: "form-control" %>
 
   <div class="form-group">
     <%= label f, :title, class: "control-label" %>
@@ -24,6 +26,7 @@
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit dgettext("dms", "Save Card"), class: "btn btn-primary",
+        data: [frankt: [action: "board:create_card", target: "#card-form"]] %>
   </div>
 <% end %>
