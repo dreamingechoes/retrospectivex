@@ -23,7 +23,7 @@ defmodule RetrospectivexWeb.BoardController do
 
             conn
             |> put_flash(:info, "Board created successfully.")
-            |> redirect(to: board_path(conn, :show, board.slug, [u: board.uuid]))
+            |> redirect(to: board_path(conn, :show, board.slug, u: board.uuid))
 
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "new.html", changeset: changeset)
