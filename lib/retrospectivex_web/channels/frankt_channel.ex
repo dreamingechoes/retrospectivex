@@ -6,6 +6,10 @@ defmodule RetrospectivexWeb.FranktChannel do
 
   def handlers do
     %{
+      # Global module
+      "global" => RetrospectivexWeb.Frankt.Global,
+
+      # Retrospectives context modules
       "board" => RetrospectivexWeb.Frankt.Retrospectives.Board
     }
   end
