@@ -14,8 +14,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
 
     timestamps()
 
-    has_many(:what_went_well, Card, on_delete: :delete_all)
-    has_many(:what_can_be_improved, Card, on_delete: :delete_all)
+    has_many(:cards, Card, on_delete: :delete_all)
   end
 
   @doc false
