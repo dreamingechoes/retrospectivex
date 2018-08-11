@@ -31,7 +31,11 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
       ** (Ecto.NoResultsError)
 
   """
-  def get_board!(id), do: Repo.get!(Board, id)
+  def get_board!(id) do
+    Board
+    |> Repo.get!(id)
+    |> Repo.preload([:cards])
+  end
 
   @doc """
   Gets a single board by slug and uuid.
@@ -50,7 +54,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board_by_slug_and_uuid!(slug, uuid) do
     Board
     |> Repo.get_by!(slug: slug, uuid: uuid)
-    |> Repo.preload([:what_went_well, :what_can_be_improved])
+    |> Repo.preload([:cards])
   end
 
   @doc """
