@@ -1,8 +1,11 @@
 
 .board-columns {
- .list-group {
-  .list-group-item:first-child {
-      font-size: 1.4rem;
+  .deck {
+    margin-bottom: 24px;
+    .list-group {
+      .list-group-item:first-child {
+        font-size: 1.4rem;
+      }
     }
   }
 }
