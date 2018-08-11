@@ -1,32 +1,36 @@
 <%= form_for @changeset, nil, [as: "card_params", id: "card-form"], fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+  <div class="modal-header">
+    <h5 class="modal-title"><%= gettext("New Card") %></h5>
+    <%= link raw("<span aria-hidden='true'>&times;</span>"),
+        to: "#", class: "btn btn-light btn-sm",
+        data: [frankt: [action: "global:close_modal"]] %>
+  </div>
+  <div class="modal-body">
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <p>Oops, something went wrong! Please check the errors below.</p>
+      </div>
+    <% end %>
+
+    <%= hidden_input f, :board_id %>
+    <%= hidden_input f, :kind %>
+
+    <div class="form-group">
+      <%= label f, :title, class: "control-label" %>
+      <%= text_input f, :title, class: "form-control", required: true %>
+      <%= error_tag f, :title %>
     </div>
-  <% end %>
 
-  <%= hidden_input f, :board_id , class: "form-control" %>
-
-  <div class="form-group">
-    <%= label f, :title, class: "control-label" %>
-    <%= textarea f, :title, class: "form-control" %>
-    <%= error_tag f, :title %>
+    <div class="form-group">
+      <%= label f, :body, class: "control-label" %>
+      <%= textarea f, :body, class: "form-control", cols: 30, rows: 4, required: true %>
+      <%= error_tag f, :body %>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= label f, :body, class: "control-label" %>
-    <%= textarea f, :body, class: "form-control" %>
-    <%= error_tag f, :body %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :votes, class: "control-label" %>
-    <%= number_input f, :votes, class: "form-control" %>
-    <%= error_tag f, :votes %>
-  </div>
-
-  <div class="form-group">
-    <%= submit dgettext("dms", "Save Card"), class: "btn btn-primary",
+  <div class="modal-footer">
+    <%= submit gettext("Save Card"), class: "btn btn-primary",
         data: [frankt: [action: "board:create_card", target: "#card-form"]] %>
+    <%= link gettext("Cancel"), to: "#", class: "btn btn-secondary",
+        data: [frankt: [action: "global:close_modal"]] %>
   </div>
 <% end %>

@@ -1,0 +1,7 @@
+<div id="action-items" class="deck col-lg-4">
+  <ul class="list-group">
+    <li class="list-group-item bg-primary text-white">
+      <%= gettext("Action Items") %>
+    </li>
+  </ul>
+</div>

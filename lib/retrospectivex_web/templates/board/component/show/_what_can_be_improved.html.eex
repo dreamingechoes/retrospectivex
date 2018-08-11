@@ -1,0 +1,24 @@
+<div id="what-can-be-improved" class="deck col-lg-4">
+  <ul class="list-group">
+    <li class="list-group-item bg-danger text-white">
+      <%= gettext("What Can Be Improved") %>
+      <%= link(raw("<i class='fa fa-plus'></i>"), to: "#",
+          class: "btn btn-sm btn-light pull-right",
+          title: gettext("Add new card"),
+          data: [
+            frankt: [
+              action: "board:create_card_modal",
+              data: Poison.encode!(%{
+                "board_id" => @board.id,
+                "kind" => :what_can_be_improved
+              })
+            ]
+          ]) %>
+    </li>
+    <%= for card <- what_can_be_improved(@board.cards) do %>
+      <li class="list-group-item list-group-item-action">
+        <%= card.title %>
+      </li>
+    <% end %>
+  </ul>
+</div>

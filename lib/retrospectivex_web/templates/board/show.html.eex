@@ -8,52 +8,7 @@
 </hr>
 
 <div class="row board-columns">
-  <div class="col-lg-4">
-    <ul class="list-group">
-      <li class="list-group-item bg-success text-white disable">
-        <%= gettext("What Went Well") %>
-        <%= link(raw("<i class='fa fa-plus'></i>"), to: "#",
-            class: "btn btn-sm btn-light pull-right",
-            alt: gettext("Add new card."),
-            data: [
-              frankt: [
-                action: "board:create_card_modal",
-                data: Poison.encode!(%{"board_id" => @board.id})
-              ]
-            ]) %>
-      </li>
-      <%= for card <- @board.what_went_well do %>
-        <li class="list-group-item list-group-item-action">
-          <%= card.title %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-lg-4">
-    <ul class="list-group">
-      <li class="list-group-item bg-danger text-white">
-        <%= gettext("What Can Be Improved") %>
-        <%= link(raw("<i class='fa fa-plus'></i>"), to: "#",
-            class: "btn btn-sm btn-light pull-right",
-            alt: gettext("Add new card.")) %>
-      </li>
-      <%= for card <- @board.what_can_be_improved do %>
-        <li class="list-group-item list-group-item-action">
-          <%= card.title %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-lg-4">
-    <ul class="list-group">
-      <li class="list-group-item bg-primary text-white">
-        <%= gettext("Action Items") %>
-        <%= link(raw("<i class='fa fa-plus'></i>"), to: "#",
-            class: "btn btn-sm btn-light pull-right",
-            alt: gettext("Add new card.")) %>
-      </li>
-    </ul>
-  </div>
+  <%= render(ShowComponentView, "_what_went_well.html", assigns) %>
+  <%= render(ShowComponentView, "_what_can_be_improved.html", assigns) %>
+  <%= render(ShowComponentView, "_action_items.html", assigns) %>
 </div>
