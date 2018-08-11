@@ -14,10 +14,6 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item nav-item-icon">
-          <%= link raw("<i class='fa fa-twitter'></i>"), to: "https://twitter.com",
-            class: "nav-link", target: "_blank" %>
-        </li>
-        <li class="nav-item nav-item-icon">
           <%= link raw("<i class='fa fa-github'></i>"), to: "https://github.com/dreamingechoes/retrospectivex",
             class: "nav-link", target: "_blank" %>
         </li>
