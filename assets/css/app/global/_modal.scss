@@ -38,9 +38,6 @@
 }
 
 .modal-content {
-  min-width: 480px;
-  max-width: 1023px;
-  padding: 24px;
   z-index: 14000;
   background: #FFF;
   border-radius: 4px;
@@ -48,16 +45,17 @@
 }
 
 .modal-header,
+.modal-body,
 .modal-footer {
   flex: 0 0 auto;
+  padding: 12px 24px;
+
 }
 
 .modal-footer {
   display: flex;
   background: #fafafa;
-  padding: 24px;
   border-radius: 0 0 4px 4px;
-  margin: 0 -24px -24px;
   text-align: right;
   .vertical-row,
   .row {
