@@ -7,6 +7,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Card do
 
   schema "cards" do
     field(:body, :string)
+    field(:kind, CardKindEnum)
     field(:title, :string)
     field(:votes, :integer)
 
@@ -18,8 +19,8 @@ defmodule Retrospectivex.Retrospectives.Schemas.Card do
   @doc false
   def changeset(card, attrs) do
     card
-    |> cast(attrs, [:title, :body, :votes, :board_id])
-    |> validate_required([:title, :body, :votes])
+    |> cast(attrs, [:title, :body, :votes, :kind, :board_id])
+    |> validate_required([:title, :body, :board_id])
     |> cast_assoc(:board)
   end
 end
