@@ -3,7 +3,7 @@
     <li class="list-group-item bg-danger text-white">
       <%= gettext("What Can Be Improved") %>
       <%= link(raw("<i class='fa fa-plus'></i>"), to: "#",
-          class: "btn btn-sm btn-light pull-right",
+          class: "btn btn-light pull-right btn-sm",
           title: gettext("Add new card"),
           data: [
             frankt: [
@@ -17,7 +17,26 @@
     </li>
     <%= for card <- what_can_be_improved(@board.cards) do %>
       <li class="list-group-item list-group-item-action">
-        <%= card.title %>
+        <div class="list-card">
+          <div class="list-card-title">
+            <%= card.title %>
+          </div>
+          <div class="list-card-votes badge badge-primary">
+            <%= gettext("%{votes} votes", votes: card.votes || 0) %>
+          </div>
+
+          <div class="list-card-actions">
+            <button type="button" class="btn btn-success btn-sm">
+              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-info btn-sm">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-sm">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
       </li>
     <% end %>
   </ul>

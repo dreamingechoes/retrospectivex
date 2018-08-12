@@ -1,33 +1,23 @@
+.board-actions {
+  margin-top: -12px;
+}
 
 .board-columns {
   .deck {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     .list-group {
+      .list-group-item {
+        padding: 12px;
+
+        .list-card-title,
+        .list-card-votes {
+          margin-bottom: 12px;
+        }
+      }
+
       .list-group-item:first-child {
         font-size: 1.4rem;
       }
     }
-  }
-}
-
-.board-jumbotron {
-  margin-top: 0 !important;
-  padding: 6rem 2em 2rem;
-  position: relative;
-  background: #000 url("/images/board-header.jpg") center center;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  overflow: hidden;
-  color: #555;
-  opacity: 0.8;
-
-  .container {
-    background-color: #fff;
-    opacity: 0.9;
-    padding: 1rem;
-    width: auto;
-    float: left;
-    border-radius: 4px;
   }
 }

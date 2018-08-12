@@ -3,5 +3,8 @@
     <li class="list-group-item bg-primary text-white">
       <%= gettext("Action Items") %>
     </li>
+    <li class="list-group-item list-group-item-action text-center">
+      <%= gettext("There's no action items yet") %>
+    </li>
   </ul>
 </div>

@@ -28,9 +28,9 @@
     </div>
   </div>
   <div class="modal-footer">
-    <%= submit gettext("Save Card"), class: "btn btn-primary",
+    <%= submit gettext("Save"), class: "btn btn-primary btn-sm",
         data: [frankt: [action: "board:create_card", target: "#card-form"]] %>
-    <%= link gettext("Cancel"), to: "#", class: "btn btn-secondary",
+    <%= link gettext("Cancel"), to: "#", class: "btn btn-secondary btn-sm",
         data: [frankt: [action: "global:close_modal"]] %>
   </div>
 <% end %>
