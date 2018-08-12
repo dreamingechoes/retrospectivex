@@ -1,5 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
   <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+    </a>
     <%= link gettext("Retrospectivex"), to: page_path(@conn, :index), class: "navbar-brand" %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -9,13 +12,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav">
-      </ul>
-
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item nav-item-icon">
-          <%= link raw("<i class='fa fa-github'></i>"), to: "https://github.com/dreamingechoes/retrospectivex",
-            class: "nav-link", target: "_blank" %>
+        <li class="nav-item text-center">
+          <%= link gettext("Home"), to: page_path(@conn, :index), class: "nav-link" %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link gettext("About"), to: "#", class: "nav-link" %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link gettext("FAQ"), to: "#", class: "nav-link" %>
         </li>
       </ul>
     </div>
