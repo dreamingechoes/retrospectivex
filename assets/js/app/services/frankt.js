@@ -1,5 +1,6 @@
 import * as Frankt from "frankt";
 import * as Modal from "./modal.js";
+import * as CodeMirror from "./codemirror.js";
 import { serialize } from "frankt/priv/static/dom";
 
 function attachResponses() {
@@ -7,6 +8,7 @@ function attachResponses() {
   Frankt.channel.on("open_modal", (res) => Modal.open(res.html));
   Frankt.channel.on("update_modal", (res) => Modal.replace(res.html));
   Frankt.channel.on("close_modal", (res) => Modal.close());
+  Frankt.channel.on("activate_codemirror", (res) => CodeMirror.activate());
 }
 
 export default $(() => {
