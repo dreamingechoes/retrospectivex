@@ -20,7 +20,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Card do
   def changeset(card, attrs) do
     card
     |> cast(attrs, [:title, :body, :votes, :kind, :board_id])
-    |> validate_required([:title, :body, :board_id])
+    |> validate_required([:title, :board_id])
     |> cast_assoc(:board)
   end
 end
