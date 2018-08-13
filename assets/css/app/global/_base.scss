@@ -43,3 +43,27 @@ footer {
 .nav-item-icon {
   font-size: 1.4rem;
 }
+
+@include media-breakpoint-up(md) {
+  .navbar {
+    .container {
+      padding: 0 15px;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .navbar {
+    .container {
+      padding: 0 15px;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .navbar {
+    .container {
+      padding: 0 15px;
+    }
+  }
+}
