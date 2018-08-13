@@ -1,6 +1,6 @@
 <%= form_for @changeset, nil, [as: "card_params", id: "card-form"], fn f -> %>
   <div class="modal-header">
-    <h5 class="modal-title"><%= gettext("New Card") %></h5>
+    <h5 class="modal-title"><%= gettext("Add New Card") %></h5>
     <%= link raw("<span aria-hidden='true'>&times;</span>"),
         to: "#", class: "btn btn-light btn-sm",
         data: [frankt: [action: "global:close_modal"]] %>
@@ -8,7 +8,7 @@
   <div class="modal-body">
     <%= if @changeset.action do %>
       <div class="alert alert-danger">
-        <p>Oops, something went wrong! Please check the errors below.</p>
+        <p><%= gettext("Oops, something went wrong! Please check the errors below") %></p>
       </div>
     <% end %>
 
@@ -17,20 +17,30 @@
 
     <div class="form-group">
       <%= label f, :title, class: "control-label" %>
-      <%= text_input f, :title, class: "form-control", required: true %>
+      <%= text_input f, :title, class: "form-control", required: true, maxlength: 255 %>
       <%= error_tag f, :title %>
+      <small class="form-text text-muted">
+        <%= gettext("* This field is required (max. length 255 characters)") %>
+      </small>
     </div>
 
     <div class="form-group">
       <%= label f, :body, class: "control-label" %>
-      <%= textarea f, :body, class: "form-control", cols: 30, rows: 4, required: true %>
+      <%= textarea f, :body, class: "form-control markdown", rows: 6 %>
       <%= error_tag f, :body %>
+      <small class="form-text text-muted">
+        <%= gettext("* You can enter the content of the card in") %>
+        <b>
+          <%= link gettext("Markdown"), to: "https://help.github.com/articles/basic-writing-and-formatting-syntax/", target: "_blank" %>
+        </b>
+      </small>
     </div>
   </div>
+
   <div class="modal-footer">
-    <%= submit gettext("Save"), class: "btn btn-primary btn-sm",
-        data: [frankt: [action: "board:create_card", target: "#card-form"]] %>
     <%= link gettext("Cancel"), to: "#", class: "btn btn-secondary btn-sm",
         data: [frankt: [action: "global:close_modal"]] %>
+    <%= submit gettext("Save"), class: "btn btn-primary btn-sm",
+        data: [frankt: [action: "board:create_card", target: "#card-form"]] %>
   </div>
 <% end %>

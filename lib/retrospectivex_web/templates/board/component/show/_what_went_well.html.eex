@@ -21,6 +21,10 @@
           <div class="list-card-title">
             <%= card.title %>
           </div>
+          <div class="list-card-date">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <%= format_date(card.inserted_at) %>
+          </div>
           <div class="list-card-votes badge badge-primary">
             <%= gettext("%{votes} votes", votes: card.votes || 0) %>
           </div>

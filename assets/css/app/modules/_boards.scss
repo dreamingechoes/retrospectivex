@@ -9,9 +9,18 @@
       .list-group-item {
         padding: 12px;
 
-        .list-card-title,
         .list-card-votes {
           margin-bottom: 12px;
+        }
+
+        .list-card-date{
+          text-align: right;
+          margin: 4px 0px 8px 0px;
+          font-size: 0.75rem;
+
+          i {
+            margin-right: 2px;
+          }
         }
       }
 
