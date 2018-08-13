@@ -82,3 +82,47 @@
   flex: 1 1 auto;
   min-height: 0;
 }
+
+@include media-breakpoint-up(xs) {
+  .modal-dialog {
+    width: 300px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .modal-dialog {
+    width: 360px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .modal-dialog {
+    width: 480px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .modal-dialog {
+    width: 800px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .modal-dialog {
+    width: 800px;
+  }
+}
+
+// Little tweaks for CodeMirror to behave as a regular bootstrap input
+.CodeMirror {
+  padding: 0.375rem 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.CodeMirror-focused {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  outline: 0 none;
+}
