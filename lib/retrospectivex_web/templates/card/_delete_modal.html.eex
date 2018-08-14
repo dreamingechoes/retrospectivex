@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h5 class="modal-title"><%= gettext("Confirm Deletion") %></h5>
+  <%= link raw("<span aria-hidden='true'>&times;</span>"),
+      to: "#", class: "btn btn-light btn-sm",
+      data: [frankt: [action: "global:close_modal"]] %>
+</div>
+
+<div class="modal-body">
+  <strong><%= gettext("Are you sure you want to delete this card?") %></strong>
+</div>
+
+<div class="modal-footer">
+  <%= link gettext("Cancel"), to: "#", class: "btn btn-secondary btn-sm",
+      data: [frankt: [action: "global:close_modal"]] %>
+  <%= link(gettext("Delete"), to: "#",
+      class: "btn btn-primary btn-sm",
+      title: gettext("Confirm card deletion"),
+      data: [
+        frankt: [
+          action: "board:delete_card",
+          data: Poison.encode!(%{
+            "card_id" => @card_id,
+            "kind" => @kind
+          })
+        ]
+      ])
+  %>
+</div>
