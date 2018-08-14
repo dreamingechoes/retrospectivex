@@ -30,9 +30,19 @@
           </div>
 
           <div class="list-card-actions">
-            <button type="button" class="btn btn-success btn-sm">
-              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-            </button>
+            <%= link(raw("<i class='fa fa-thumbs-up' aria-hidden='true'></i>"), to: "#",
+              class: "btn btn-success btn-sm",
+              title: gettext("Vote Card"),
+              data: [
+                frankt: [
+                  action: "board:vote_card",
+                  data: Poison.encode!(%{
+                    "card_id" => card.id,
+                    "kind" => :what_went_well
+                  })
+                ]
+              ]) %>
+
             <button type="button" class="btn btn-info btn-sm">
               <i class="fa fa-eye" aria-hidden="true"></i>
             </button>

@@ -32,6 +32,18 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
     end
   end
 
+  def vote_card(%{"card_id" => card_id, "kind" => kind}, socket) do
+    card = Retrospectives.get_card!(card_id)
+
+    case Retrospectives.update_card(card, %{votes: upvote_card(card)}) do
+      {:ok, card} ->
+        update_card_deck(kind, card.board_id, socket)
+
+      _error ->
+        nil
+    end
+  end
+
   defp update_card_deck("what_can_be_improved", board_id, socket) do
     push(socket, "replace_with", %{
       target: "#what-can-be-improved",
@@ -59,4 +71,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
         )
     })
   end
+
+  defp upvote_card(%{votes: nil}), do: 1
+  defp upvote_card(%{votes: votes}), do: votes + 1
 end
