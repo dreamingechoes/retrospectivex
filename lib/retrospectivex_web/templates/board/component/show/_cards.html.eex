@@ -1,0 +1,90 @@
+
+<div class="stack col-lg-4" id="<%= @kind %>">
+  <div class="list-heading <%= title_cards_stack_bg_color(@kind) %>" id="<%= @kind %>_stack_heading">
+    <%= title_cards_stack(@kind) %>
+    <%= link(raw("<i class='fa fa-plus'></i>"), to: "#",
+        class: "btn btn-light pull-right btn-sm",
+        title: gettext("Add new card"),
+        data: [
+          frankt: [
+            action: "board:create_card_modal",
+            data: Poison.encode!(%{
+              "board_id" => @board.id,
+              "kind" => @kind
+            })
+          ]
+        ])
+    %>
+    <a class="btn btn-light pull-right btn-sm" href="#" data-toggle="collapse"
+      data-target="#<%= @kind %>_stack_collapse" aria-expanded="true"
+      aria-controls="<%= @kind %>_stack_collapse">
+      <i class='fa fa-chevron-up'></i>
+    </a>
+  </div>
+
+  <div id="<%= @kind %>_stack_collapse" class="collapse stack show" aria-labelledby="<%= @kind %>_stack_heading"
+    data-parent="#<%= @kind %>">
+    <ul class="list-group" id="<%= @kind %>_list">
+      <%= for card <- get_stack_cards(@board.cards, @kind) do %>
+        <li class="list-group-item list-group-item-action">
+          <div class="list-card">
+            <div class="list-card-title">
+              <%= card.title %>
+            </div>
+            <div class="list-card-date">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <%= format_date(card.inserted_at) %>
+            </div>
+            <div class="list-card-votes badge badge-primary">
+              <%= gettext("%{votes} votes", votes: card.votes || 0) %>
+            </div>
+
+            <div class="list-card-actions">
+              <%= link(raw("<i class='fa fa-thumbs-up' aria-hidden='true'></i>"), to: "#",
+                  class: "btn btn-success btn-sm",
+                  title: gettext("Vote card"),
+                  data: [
+                    frankt: [
+                      action: "board:vote_card",
+                      data: Poison.encode!(%{
+                        "card_id" => card.id,
+                        "kind" => @kind
+                      })
+                    ]
+                  ])
+              %>
+
+              <%= link(raw("<i class='fa fa-eye' aria-hidden='true'></i>"), to: "#",
+                  class: "btn btn-info btn-sm",
+                  title: gettext("Show card"),
+                  data: [
+                    frankt: [
+                      action: "board:show_card_modal",
+                      data: Poison.encode!(%{
+                        "card_id" => card.id,
+                        "kind" => @kind
+                      })
+                    ]
+                  ])
+              %>
+
+              <%= link(raw("<i class='fa fa-trash' aria-hidden='true'></i>"), to: "#",
+                  class: "btn btn-danger btn-sm",
+                  title: gettext("Delete card"),
+                  data: [
+                    frankt: [
+                      action: "board:delete_card_modal",
+                      data: Poison.encode!(%{
+                        "card_id" => card.id,
+                        "kind" => @kind
+                      })
+                    ]
+                  ])
+              %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

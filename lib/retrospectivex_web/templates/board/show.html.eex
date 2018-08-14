@@ -45,7 +45,7 @@
 </div>
 
 <div class="row board-columns">
-  <%= render(ShowComponentView, "_what_went_well.html", assigns) %>
-  <%= render(ShowComponentView, "_what_can_be_improved.html", assigns) %>
+  <%= render(ShowComponentView, "_cards.html", Map.put(assigns, :kind, :what_went_well)) %>
+  <%= render(ShowComponentView, "_cards.html", Map.put(assigns, :kind, :what_can_be_improved)) %>
   <%= render(ShowComponentView, "_action_items.html", assigns) %>
 </div>

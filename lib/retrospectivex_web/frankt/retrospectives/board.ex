@@ -25,7 +25,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
 
     case Retrospectives.create_card(card_params) do
       {:ok, card} ->
-        update_card_deck(kind, card.board_id, socket)
+        update_card_stack(kind, card.board_id, socket)
 
       _error ->
         nil
@@ -37,37 +37,50 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
 
     case Retrospectives.update_card(card, %{votes: upvote_card(card)}) do
       {:ok, card} ->
-        update_card_deck(kind, card.board_id, socket)
+        update_card_stack(kind, card.board_id, socket)
 
       _error ->
         nil
     end
   end
 
-  defp update_card_deck("what_can_be_improved", board_id, socket) do
-    push(socket, "replace_with", %{
-      target: "#what-can-be-improved",
-      html:
-        render(
-          socket,
-          ShowComponentView,
-          "_what_can_be_improved.html",
-          conn: %Plug.Conn{},
-          board: Retrospectives.get_board!(board_id)
-        )
-    })
+  def delete_card_modal(%{"card_id" => card_id, "kind" => kind}, socket) do
+    html =
+      render(
+        socket,
+        CardView,
+        "_delete_modal.html",
+        card_id: card_id,
+        kind: kind
+      )
+
+    push(socket, "open_modal", %{html: html})
   end
 
-  defp update_card_deck("what_went_well", board_id, socket) do
+  def delete_card(%{"card_id" => card_id, "kind" => kind}, socket) do
+    card = Retrospectives.get_card!(card_id)
+
+    case Retrospectives.delete_card(card) do
+      {:ok, card} ->
+        update_card_stack(kind, card.board_id, socket)
+        push(socket, "close_modal", %{})
+
+      _error ->
+        nil
+    end
+  end
+
+  defp update_card_stack(kind, board_id, socket) do
     push(socket, "replace_with", %{
-      target: "#what-went-well",
+      target: "##{kind}",
       html:
         render(
           socket,
           ShowComponentView,
-          "_what_went_well.html",
+          "_cards.html",
           conn: %Plug.Conn{},
-          board: Retrospectives.get_board!(board_id)
+          board: Retrospectives.get_board!(board_id),
+          kind: String.to_atom(kind)
         )
     })
   end
