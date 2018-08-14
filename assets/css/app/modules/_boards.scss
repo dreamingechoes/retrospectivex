@@ -3,8 +3,18 @@
 }
 
 .board-columns {
-  .deck {
+  .stack {
     margin-bottom: 12px;
+    .list-heading {
+      font-size: 1.2rem;
+      color: #fff;
+      padding: 12px;
+
+      a:last-child {
+        margin-right: 8px;
+      }
+    }
+
     .list-group {
       .list-group-item {
         padding: 12px;
@@ -23,9 +33,10 @@
           }
         }
       }
-
       .list-group-item:first-child {
-        font-size: 1.4rem;
+        border-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
       }
     }
   }

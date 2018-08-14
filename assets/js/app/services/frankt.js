@@ -1,4 +1,5 @@
 import * as Frankt from "frankt";
+import * as Accordion from "./accordion.js";
 import * as Modal from "./modal.js";
 import * as CodeMirror from "./codemirror.js";
 import { serialize } from "frankt/priv/static/dom";
@@ -9,6 +10,7 @@ function attachResponses() {
   Frankt.channel.on("update_modal", (res) => Modal.replace(res.html));
   Frankt.channel.on("close_modal", (res) => Modal.close());
   Frankt.channel.on("activate_codemirror", (res) => CodeMirror.activate());
+  Frankt.channel.on("setup_accordion", (res) => Accordion.setup());
 }
 
 export default $(() => {

@@ -83,6 +83,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
           kind: String.to_atom(kind)
         )
     })
+    push(socket, "setup_accordion", %{})
   end
 
   defp upvote_card(%{votes: nil}), do: 1
