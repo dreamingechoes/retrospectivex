@@ -17,7 +17,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
       )
 
     push(socket, "open_modal", %{html: html})
-    push(socket, "activate_codemirror", %{})
+    push(socket, "activate_codemirror", %{id: "card_params_body"})
   end
 
   def create_card(%{"card_params" => card_params = %{"kind" => kind}}, socket) do
@@ -64,7 +64,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
       )
 
     push(socket, "update_modal", %{html: html})
-    push(socket, "activate_codemirror", %{})
+    push(socket, "activate_codemirror", %{id: "card_params_body"})
   end
 
   def update_card(

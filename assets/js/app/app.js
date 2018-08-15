@@ -8,8 +8,8 @@ import "popper.js/dist/umd/popper"
 import "bootstrap/dist/js/bootstrap"
 
 // Services
-import "./services/frankt.js"
-import * as Accordion from "./services/accordion.js";
+import "./services/frankt"
+import * as Accordion from "./services/accordion"
 
 // Init accordion plugin if needed
 Accordion.setup();

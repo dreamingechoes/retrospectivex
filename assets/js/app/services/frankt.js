@@ -9,7 +9,7 @@ function attachResponses() {
   Frankt.channel.on("open_modal", (res) => Modal.open(res.html));
   Frankt.channel.on("update_modal", (res) => Modal.replace(res.html));
   Frankt.channel.on("close_modal", (res) => Modal.close());
-  Frankt.channel.on("activate_codemirror", (res) => CodeMirror.activate());
+  Frankt.channel.on("activate_codemirror", (res) => CodeMirror.activate(res.id));
   Frankt.channel.on("setup_accordion", (res) => Accordion.setup());
 }
 
