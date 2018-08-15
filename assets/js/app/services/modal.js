@@ -20,7 +20,6 @@ function fadeIn($modal) {
       el.style.opacity = val;
       requestAnimationFrame(fade);
     } else {
-      console.log('Modal opened');
       $modal.trigger('dom-update', { source: 'modal' });
     }
   })();
@@ -35,7 +34,6 @@ export function open(content) {
 }
 
 export function replace(content) {
-  console.log('Modal updated');
   const $modal = $(SELECTOR).last();
   $modal.show().find('.modal-content').html(content);
   $modal.trigger('dom-update', { source: 'modal' });
@@ -46,7 +44,6 @@ export function close() {
   (function fade() {
     if ($el[0] && ($el[0].style.opacity -= .1) < 0) {
       $el.remove();
-      console.log('Modal closed');
     } else {
       requestAnimationFrame(fade);
     }
