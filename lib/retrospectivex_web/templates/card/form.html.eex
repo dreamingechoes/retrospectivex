@@ -1,10 +1,11 @@
 <%= form_for @changeset, nil, [as: "card_params", id: "card-form"], fn f -> %>
   <div class="modal-header">
-    <h5 class="modal-title"><%= gettext("Add New Card") %></h5>
+    <h5 class="modal-title"> <%= title_card_form(@changeset) %> </h5>
     <%= link raw("<span aria-hidden='true'>&times;</span>"),
         to: "#", class: "btn btn-light btn-sm",
         data: [frankt: [action: "global:close_modal"]] %>
   </div>
+
   <div class="modal-body">
     <%= if @changeset.action do %>
       <div class="alert alert-danger">
@@ -26,13 +27,11 @@
 
     <div class="form-group">
       <%= label f, :body, class: "control-label" %>
-      <%= textarea f, :body, class: "form-control markdown", rows: 6 %>
+      <%= textarea f, :body, class: "form-control markdown" %>
       <%= error_tag f, :body %>
       <small class="form-text text-muted">
         <%= gettext("* You can enter the content of the card in") %>
-        <b>
-          <%= link gettext("Markdown"), to: "https://help.github.com/articles/basic-writing-and-formatting-syntax/", target: "_blank" %>
-        </b>
+        <b> <%= link gettext("Markdown"), to: "https://goo.gl/cBYosg", target: "_blank" %> </b>
       </small>
     </div>
   </div>
