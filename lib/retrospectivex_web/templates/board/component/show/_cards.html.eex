@@ -28,9 +28,7 @@
       <%= for card <- get_stack_cards(@board.cards, @kind) do %>
         <li class="list-group-item list-group-item-action">
           <div class="list-card">
-            <div class="list-card-title">
-              <%= card.title %>
-            </div>
+            <div class="list-card-title"> <%= card.title %> </div>
             <div class="list-card-date">
               <i class="fa fa-calendar" aria-hidden="true"></i>
               <%= format_date(card.inserted_at) %>

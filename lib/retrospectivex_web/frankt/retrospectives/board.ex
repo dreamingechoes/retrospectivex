@@ -44,6 +44,29 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
     end
   end
 
+  def show_card_modal(%{"card_id" => card_id, "kind" => kind}, socket) do
+    card = Retrospectives.get_card!(card_id)
+
+    html = render(socket, CardView, "show.html", card: card, kind: kind)
+
+    push(socket, "open_modal", %{html: html})
+  end
+
+  def edit_card_modal(%{"card_id" => card_id, "kind" => kind}, socket) do
+    card = Retrospectives.get_card!(card_id)
+
+    html =
+      render(
+        socket,
+        CardView,
+        "form.html",
+        changeset: Retrospectives.change_card(card)
+      )
+
+    push(socket, "update_modal", %{html: html})
+    push(socket, "activate_codemirror", %{})
+  end
+
   def delete_card_modal(%{"card_id" => card_id, "kind" => kind}, socket) do
     html =
       render(
@@ -83,6 +106,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
           kind: String.to_atom(kind)
         )
     })
+
     push(socket, "setup_accordion", %{})
   end
 

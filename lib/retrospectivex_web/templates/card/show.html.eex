@@ -1,23 +1,40 @@
-<h2>Show Card</h2>
+<div class="modal-header">
+  <h5 class="modal-title"><%= gettext("Card Detail") %></h5>
+  <%= link raw("<span aria-hidden='true'>&times;</span>"),
+      to: "#", class: "btn btn-light btn-sm",
+      data: [frankt: [action: "global:close_modal"]] %>
+</div>
 
-<ul>
+<div class="modal-body">
+  <div class="row">
+    <div class="col">
+      <span><%= gettext("Title") %></span>
+      <p><%= @card.title %></p>
+    </div>
+  </div>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @card.title %>
-  </li>
+  <div class="row">
+    <div class="col">
+      <span><%= gettext("Body") %></span>
+      <%= raw(Earmark.as_html!(@card.body || "")) %>
+    </div>
+  </div>
+</div>
 
-  <li>
-    <strong>Body:</strong>
-    <%= @card.body %>
-  </li>
-
-  <li>
-    <strong>Votes:</strong>
-    <%= @card.votes %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: card_path(@conn, :edit, @card) %></span>
-<span><%= link "Back", to: card_path(@conn, :index) %></span>
+<div class="modal-footer">
+  <%= link gettext("Cancel"), to: "#", class: "btn btn-secondary btn-sm",
+      data: [frankt: [action: "global:close_modal"]] %>
+  <%= link(gettext("Edit"), to: "#",
+      class: "btn btn-primary btn-sm",
+      title: gettext("Edit card"),
+      data: [
+        frankt: [
+          action: "board:edit_card_modal",
+          data: Poison.encode!(%{
+            "card_id" => @card.id,
+            "kind" => @kind
+          })
+        ]
+      ])
+  %>
+</div>
