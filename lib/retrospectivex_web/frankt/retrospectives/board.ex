@@ -67,6 +67,23 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
     push(socket, "activate_codemirror", %{})
   end
 
+  def update_card(
+        %{"card_params" => card_params = %{"id" => card_id, "kind" => kind}},
+        socket
+      ) do
+    card = Retrospectives.get_card!(card_id)
+
+    push(socket, "close_modal", %{})
+
+    case Retrospectives.update_card(card, card_params) do
+      {:ok, card} ->
+        update_card_stack(kind, card.board_id, socket)
+
+      _error ->
+        nil
+    end
+  end
+
   def delete_card_modal(%{"card_id" => card_id, "kind" => kind}, socket) do
     html =
       render(

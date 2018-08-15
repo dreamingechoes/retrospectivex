@@ -13,6 +13,7 @@
       </div>
     <% end %>
 
+    <%= hidden_input f, :id %>
     <%= hidden_input f, :board_id %>
     <%= hidden_input f, :kind %>
 
@@ -40,6 +41,6 @@
     <%= link gettext("Cancel"), to: "#", class: "btn btn-secondary btn-sm",
         data: [frankt: [action: "global:close_modal"]] %>
     <%= submit gettext("Save"), class: "btn btn-primary btn-sm",
-        data: [frankt: [action: "board:create_card", target: "#card-form"]] %>
+        data: [frankt: [action: card_form_action(@changeset), target: "#card-form"]] %>
   </div>
 <% end %>
