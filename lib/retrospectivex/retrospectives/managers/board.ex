@@ -3,6 +3,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
 
   alias Retrospectivex.Repo
   alias Retrospectivex.Retrospectives.Schemas.Board
+  alias Retrospectivex.Retrospectives.Schemas.Card
 
   @doc """
   Returns the list of boards.
@@ -34,7 +35,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board!(id) do
     Board
     |> Repo.get!(id)
-    |> Repo.preload([:cards])
+    |> Repo.preload([cards: (from c in Card, order_by: c.inserted_at)])
   end
 
   @doc """
@@ -54,7 +55,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board_by_slug_and_uuid!(slug, uuid) do
     Board
     |> Repo.get_by!(slug: slug, uuid: uuid)
-    |> Repo.preload([:cards])
+    |> Repo.preload([cards: (from c in Card, order_by: c.inserted_at)])
   end
 
   @doc """
