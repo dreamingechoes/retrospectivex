@@ -1,7 +1,7 @@
 import CodeMirror from "codemirror/lib/codemirror"
 import "codemirror/mode/markdown/markdown"
 
-export function activate(content) {
+export function activate() {
   if (document.getElementsByClassName("markdown").length > 0) {
     CodeMirror.fromTextArea(document.getElementsByClassName("markdown")[0], {
       styleActiveLine: true,
