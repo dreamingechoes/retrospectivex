@@ -14,13 +14,18 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-  padding-top: 80px;
+  padding-top: 94px;
   font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+h5 {
+  font-size: 1.1rem;
 }
 
 @media (min-width: 992px) {
   body {
-    padding-top: 80px;
+    padding-top: 94px;
   }
 }
 

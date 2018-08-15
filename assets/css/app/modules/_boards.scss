@@ -41,3 +41,8 @@
     }
   }
 }
+
+.card-body-content {
+  max-height: 300px;
+  overflow-y: scroll;
+}
