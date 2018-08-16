@@ -49,6 +49,10 @@ footer {
   font-size: 1.4rem;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
 @include media-breakpoint-up(md) {
   .navbar {
     .container {
