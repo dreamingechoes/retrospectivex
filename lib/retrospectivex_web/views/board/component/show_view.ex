@@ -1,6 +1,14 @@
 defmodule RetrospectivexWeb.Board.Component.ShowView do
   use RetrospectivexWeb, :view
 
+  defp board_order_by_options do
+    [
+      {gettext("Oder by..."), nil},
+      {gettext("Votes"), "votes"},
+      {gettext("Creation date"), "date"}
+    ]
+  end
+
   def format_date(date), do: Enum.join([date.year, date.month, date.day], "/")
 
   def get_stack_cards(cards, :what_can_be_improved) do

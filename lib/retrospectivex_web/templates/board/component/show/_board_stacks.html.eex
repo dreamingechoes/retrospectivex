@@ -1,0 +1,3 @@
+<%= render("_cards.html", Map.put(assigns, :kind, :what_went_well)) %>
+<%= render("_cards.html", Map.put(assigns, :kind, :what_can_be_improved)) %>
+<%= render("_action_items.html", assigns) %>

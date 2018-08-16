@@ -1,0 +1,29 @@
+<div class="col-lg-4">
+  <%= form_for @conn, nil, [as: "board_filters", id: "board-filters-form", class: "form-inline"], fn f -> %>
+    <% frankt_data = [action: "board:filter_cards", target: "#board-filters-form", auto: true] %>
+
+    <%= select f, :order_by, board_order_by_options(), class: "form-control form-control-sm mr-2 mb-2",
+        data: [frank: frankt_data] %>
+    <%= text_input f, :query, class: "form-control form-control-sm mr-2 mb-2",
+        placeholder: "Search card...", data: [frank: frankt_data] %>
+  <% end %>
+    </div>
+
+  <div class="col-lg-4 offset-lg-4 text-right">
+    <button type="button" class="btn btn-primary btn-sm">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-danger btn-sm">
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </button>
+
+    <div class="btn-group" role="group">
+      <button id="download-options" type="button" class="btn btn-secondary dropdown-toggle btn-sm"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-download" aria-hidden="true"></i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="download-options">
+        <a class="dropdown-item" href="#"><%= gettext("Markdown") %></a>
+      </div>
+    </div>
+  </div>

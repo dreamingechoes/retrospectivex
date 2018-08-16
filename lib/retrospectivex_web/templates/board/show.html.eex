@@ -1,47 +1,14 @@
-<div class="row">
+<div class="row mb-2">
   <div class="col-lg-12">
-    <h1 class="page-header"><%= @board.title %></h1>
-    <div>
-      <%= raw(Earmark.as_html!(@board.description)) %>
-    </div>
+    <h1 class="page-header"> <%= @board.title %> </h1>
+    <div> <%= raw(Earmark.as_html!(@board.description)) %> </div>
   </div>
 </div>
 
-<div class="row board-actions">
-  <nav class="navbar col-lg-12">
-    <form class="form-inline">
-      <select class="form-control form-control-sm mr-2 mb-2">
-        <option>Order by...</option>
-        <option>Votes</option>
-        <option>Creation date</option>
-      </select>
-      <input class="form-control form-control-sm mr-2 mb-2" type="search"
-        placeholder="Search card..." aria-label="Search">
-    </form>
-
-    <div class="pull-right">
-      <button type="button" class="btn btn-primary btn-sm">
-        <i class="fa fa-times" aria-hidden="true"></i>
-      </button>
-      <button type="button" class="btn btn-danger btn-sm">
-        <i class="fa fa-trash" aria-hidden="true"></i>
-      </button>
-
-      <div class="btn-group" role="group">
-        <button id="download-options" type="button" class="btn btn-secondary dropdown-toggle btn-sm"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-download" aria-hidden="true"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="download-options">
-          <a class="dropdown-item" href="#"><%= gettext("Markdown") %></a>
-        </div>
-      </div>
-    </div>
-  </nav>
+<div class="row board-actions mb-2">
+  <%= render(ShowComponentView, "_board_actions.html", assigns) %>
 </div>
 
-<div class="row board-columns">
-  <%= render(ShowComponentView, "_cards.html", Map.put(assigns, :kind, :what_went_well)) %>
-  <%= render(ShowComponentView, "_cards.html", Map.put(assigns, :kind, :what_can_be_improved)) %>
-  <%= render(ShowComponentView, "_action_items.html", assigns) %>
+<div id="board-stacks" class="row board-stacks">
+  <%= render(ShowComponentView, "_board_stacks.html", assigns) %>
 </div>
