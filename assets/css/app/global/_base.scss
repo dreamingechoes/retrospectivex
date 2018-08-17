@@ -53,6 +53,10 @@ footer {
   color: #fff;
 }
 
+.navbar-icons {
+  font-size: 1.4rem;
+}
+
 @include media-breakpoint-up(md) {
   .navbar {
     .container {
