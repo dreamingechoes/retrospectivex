@@ -6,7 +6,9 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
   alias Retrospectivex.Retrospectives.Schemas.Card
 
   schema "boards" do
+    field(:date, :naive_datetime)
     field(:description, :string)
+    field(:moderator, :string)
     field(:slug, :string)
     field(:status, BoardStatusEnum)
     field(:title, :string)
@@ -20,7 +22,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
   @doc false
   def changeset(board, attrs) do
     board
-    |> cast(attrs, [:title, :description, :status])
+    |> cast(attrs, [:title, :description, :status, :moderator, :date])
     |> validate_required([:title, :description, :status])
     |> generate_slug()
   end
