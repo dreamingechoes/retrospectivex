@@ -48,14 +48,8 @@ defmodule RetrospectivexWeb.Router do
       # Log out resource
       get("/logout", SessionController, :delete)
 
-      resources(
-        "/boards",
-        BoardController,
-        only: [:new, :create, :show],
-        param: "slug"
-      )
-
-      resources("/cards", CardController)
+      resources("/boards", BoardController, only: [:new, :create])
+      resources("/for", BoardController, only: [:show], param: "slug")
       resources("/", PageController, only: [:index, :show], param: "slug")
     end
   end
