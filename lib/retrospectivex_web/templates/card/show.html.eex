@@ -26,7 +26,7 @@
       title: gettext("Vote card"),
       data: [
         frankt: [
-          action: "board:vote_card",
+          action: "card:vote",
           data: Poison.encode!(%{
             "card_id" => @card.id,
             "kind" => @kind,
@@ -41,10 +41,9 @@
       title: gettext("Edit card"),
       data: [
         frankt: [
-          action: "board:edit_card_modal",
+          action: "card:edit_modal",
           data: Poison.encode!(%{
-            "card_id" => @card.id,
-            "kind" => @kind
+            "card_id" => @card.id
           })
         ]
       ])

@@ -17,7 +17,7 @@
       title: gettext("Confirm card deletion"),
       data: [
         frankt: [
-          action: "board:delete_card",
+          action: "card:delete",
           data: Poison.encode!(%{
             "card_id" => @card_id,
             "kind" => @kind

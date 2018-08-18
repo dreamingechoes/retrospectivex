@@ -7,7 +7,7 @@
         title: gettext("Add new card"),
         data: [
           frankt: [
-            action: "board:create_card_modal",
+            action: "card:create_modal",
             data: Poison.encode!(%{
               "board_id" => @board.id,
               "kind" => @kind
@@ -43,7 +43,7 @@
                   title: gettext("Vote card"),
                   data: [
                     frankt: [
-                      action: "board:vote_card",
+                      action: "card:vote",
                       data: Poison.encode!(%{
                         "card_id" => card.id,
                         "kind" => @kind,
@@ -58,7 +58,7 @@
                   title: gettext("Show card"),
                   data: [
                     frankt: [
-                      action: "board:show_card_modal",
+                      action: "card:show_modal",
                       data: Poison.encode!(%{
                         "card_id" => card.id,
                         "kind" => @kind
@@ -72,7 +72,7 @@
                   title: gettext("Delete card"),
                   data: [
                     frankt: [
-                      action: "board:delete_card_modal",
+                      action: "card:delete_modal",
                       data: Poison.encode!(%{
                         "card_id" => card.id,
                         "kind" => @kind
