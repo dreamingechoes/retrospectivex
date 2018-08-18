@@ -35,7 +35,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board!(id) do
     Board
     |> Repo.get!(id)
-    |> Repo.preload([cards: (from c in Card, order_by: c.inserted_at)])
+    |> Repo.preload(cards: from(c in Card, order_by: c.inserted_at))
   end
 
   @doc """
@@ -55,7 +55,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board_by_slug_and_uuid!(slug, uuid) do
     Board
     |> Repo.get_by!(slug: slug, uuid: uuid)
-    |> Repo.preload([cards: (from c in Card, order_by: c.inserted_at)])
+    |> Repo.preload(cards: from(c in Card, order_by: c.inserted_at))
   end
 
   @doc """
