@@ -46,7 +46,8 @@
                       action: "board:vote_card",
                       data: Poison.encode!(%{
                         "card_id" => card.id,
-                        "kind" => @kind
+                        "kind" => @kind,
+                        "origin" => "board"
                       })
                     ]
                   ])

@@ -35,12 +35,22 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
     end
   end
 
-  def vote_card(%{"card_id" => card_id, "kind" => kind}, socket) do
+  def vote_card(
+        %{"card_id" => card_id, "kind" => kind, "origin" => origin},
+        socket
+      ) do
     card = Retrospectives.get_card!(card_id)
 
     case Retrospectives.update_card(card, %{votes: upvote_card(card)}) do
       {:ok, card} ->
         update_card_stack(kind, card.board_id, socket)
+
+        case origin do
+          "card" ->
+            html = render(socket, CardView, "show.html", card: card, kind: kind)
+
+            push(socket, "update_modal", %{html: html})
+        end
 
       _error ->
         nil
@@ -76,11 +86,13 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
       ) do
     card = Retrospectives.get_card!(card_id)
 
-    push(socket, "close_modal", %{})
-
     case Retrospectives.update_card(card, card_params) do
       {:ok, card} ->
         update_card_stack(kind, card.board_id, socket)
+
+        html = render(socket, CardView, "show.html", card: card, kind: kind)
+
+        push(socket, "update_modal", %{html: html})
 
       _error ->
         nil

@@ -26,10 +26,11 @@
       title: gettext("Vote card"),
       data: [
         frankt: [
-          action: "board:show_card_modal",
+          action: "board:vote_card",
           data: Poison.encode!(%{
-            "card_id" => 1,
-            "kind" => 1
+            "card_id" => @card.id,
+            "kind" => @kind,
+            "origin" => "card"
           })
         ]
       ])
