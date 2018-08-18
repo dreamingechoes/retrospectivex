@@ -1,14 +1,24 @@
-<div class="row mb-2">
-  <div class="col-lg-12">
-    <h1 class="page-header"> <%= @board.title %> </h1>
-    <div> <%= raw(Earmark.as_html!(@board.description)) %> </div>
+<div class="row bd-callout bd-callout-default">
+  <h4 class="board-header"> <%= @board.title %> </h4>
+  <div class="board-info mt-2">
+    <div class="board-moderator d-inline-flex mr-2">
+      <i class="fa fa-user mr-2" aria-hidden="true"></i>
+      <%= @board.moderator || gettext("No moderator specified.") %>
+    </div>
+    <div class="board-date d-inline-flex">
+      <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
+      <%= format_date(@board.date) %>
+    </div>
+  </div>
+  <div class="board-body mt-2">
+    <%= raw(Earmark.as_html!(@board.description)) %>
   </div>
 </div>
 
-<div class="row board-actions mb-2">
+<div class="row board-actions mt-3 mb-2">
   <%= render(ShowComponentView, "_board_actions.html", assigns) %>
 </div>
 
-<div id="board-stacks" class="row board-stacks">
+<div class="row board-stacks" id="board-stacks">
   <%= render(ShowComponentView, "_board_stacks.html", assigns) %>
 </div>

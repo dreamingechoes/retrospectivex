@@ -4,11 +4,11 @@
 $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
 @import "font-awesome/scss/font-awesome";
 @import "bootstrap/scss/bootstrap";
-
 @import "~codemirror/lib/codemirror";
 
 // Styles
 @import "global/_base.scss";
+@import "global/_callouts.scss";
 @import "global/_modal.scss";
 @import "modules/_boards.scss";
 
