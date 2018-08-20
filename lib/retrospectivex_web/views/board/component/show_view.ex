@@ -5,7 +5,6 @@ defmodule RetrospectivexWeb.Board.Component.ShowView do
 
   defp board_order_by_options do
     [
-      {gettext("Oder by..."), nil},
       {gettext("Votes"), "votes"},
       {gettext("Creation date"), "date"}
     ]

@@ -3,7 +3,7 @@
   <div class="board-info mt-2">
     <div class="board-moderator d-inline-flex mr-2">
       <i class="fa fa-user mr-2" aria-hidden="true"></i>
-      <%= @board.moderator || gettext("No moderator specified.") %>
+      <%= @board.moderator || gettext("No moderator specified") %>
     </div>
     <div class="board-date d-inline-flex">
       <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
