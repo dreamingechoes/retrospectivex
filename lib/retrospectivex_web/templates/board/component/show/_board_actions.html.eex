@@ -3,9 +3,9 @@
     <% frankt_data = [action: "board:filter_cards", target: "#board-filters-form", auto: true] %>
 
     <%= select f, :order_by, board_order_by_options(), class: "form-control form-control-sm mr-2 mb-2",
-        data: [frank: frankt_data] %>
+        data: [frankt: frankt_data] %>
     <%= text_input f, :query, class: "form-control form-control-sm mr-2 mb-2",
-        placeholder: "Search card...", data: [frank: frankt_data] %>
+        placeholder: "Search card...", data: [frankt: frankt_data] %>
   <% end %>
 </div>
 
