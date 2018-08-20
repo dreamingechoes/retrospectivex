@@ -6,10 +6,15 @@ import Popper from "popper.js"
 
 import "popper.js/dist/umd/popper"
 import "bootstrap/dist/js/bootstrap"
+import "flatpickr/dist/flatpickr"
 
 // Services
 import "./services/frankt"
 import * as Accordion from "./services/accordion"
+import * as Datepicker from "./services/datepicker"
 
 // Init accordion plugin if needed
 Accordion.setup();
+
+// Init datepicker plugin if needed
+Datepicker.setup();

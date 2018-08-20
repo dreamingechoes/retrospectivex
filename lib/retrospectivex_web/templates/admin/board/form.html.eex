@@ -28,7 +28,7 @@
 
         <div class="col">
           <%= label f, :date, class: "control-label" %>
-          <%= text_input f, :date, class: "form-control", type: :date %>
+          <%= text_input f, :date, class: "form-control date" %>
           <%= error_tag f, :date %>
         </div>
       </div>
