@@ -1,4 +1,10 @@
-<h1 class="display-4"><%= gettext("Hello from Retrospectivex!") %></h1>
-<p class="lead">
-  <%= gettext("To see some information, go to the admin section.") %>
-</p>
+<div class="row page-index">
+  <dic class="mt-4 col-lg-4">
+  <h1 class="display-4"><%= gettext("Retrospectivex") %></h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <%= link gettext("Create New Board"), to: board_path(@conn, :new), class: "btn btn-primary btn-lg", role: "button" %>
+  </p>
+  </div>
+</div>
