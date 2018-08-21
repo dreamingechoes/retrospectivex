@@ -5,7 +5,7 @@ defmodule Retrospectivex.Mixfile do
     [
       app: :retrospectivex,
       version: "0.0.1",
-      elixir: "~> 1.6",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -45,7 +45,7 @@ defmodule Retrospectivex.Mixfile do
       # Default Phoenix stuff
       {:cowboy, "~> 1.1.2"},
       {:gettext, "~> 0.13.1"},
-      {:phoenix, "~> 1.3.3", override: true},
+      {:phoenix, "~> 1.3.4", override: true},
       {:phoenix_ecto, "~> 3.3.0"},
       {:postgrex, ">= 0.13.3"},
       {:phoenix_pubsub, "~> 1.0.2"},
@@ -61,7 +61,6 @@ defmodule Retrospectivex.Mixfile do
       # Authentication
       {:comeonin, "~> 4.1.1"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:guardian, "~> 1.0"},
 
       # Code analysis
       {:credo, "~> 0.9.0", only: [:dev, :test]},
@@ -71,8 +70,7 @@ defmodule Retrospectivex.Mixfile do
       # Code documentation
       {:ex_doc, "~> 0.16.4", only: :dev, runtime: false},
 
-      # Random
-      {:timex, "~> 3.2.1"},
+      # Google Recaptcha
       {:recaptcha, "~> 2.3"},
 
       # Testing and seeding data
