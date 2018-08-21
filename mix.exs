@@ -61,6 +61,7 @@ defmodule Retrospectivex.Mixfile do
       # Authentication
       {:comeonin, "~> 4.1.1"},
       {:bcrypt_elixir, "~> 1.0"},
+      {:guardian, "~> 1.0"},
 
       # Code analysis
       {:credo, "~> 0.9.0", only: [:dev, :test]},
