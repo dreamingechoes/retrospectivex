@@ -9,7 +9,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Card do
     field(:body, :string)
     field(:kind, CardKindEnum)
     field(:title, :string)
-    field(:votes, :integer)
+    field(:votes, :integer, default: 0)
 
     timestamps()
 
