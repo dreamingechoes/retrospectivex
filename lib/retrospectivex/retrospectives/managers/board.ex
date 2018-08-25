@@ -3,7 +3,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
 
   alias Retrospectivex.Repo
   alias Retrospectivex.Retrospectives.Schemas.Board
-  alias Retrospectivex.Retrospectives.Schemas.Card
+  alias Retrospectivex.Retrospectives.Queries.Card, as: CardQuery
 
   @doc """
   Returns the list of boards.
@@ -35,7 +35,27 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board!(id) do
     Board
     |> Repo.get!(id)
-    |> Repo.preload(cards: from(c in Card, order_by: c.inserted_at))
+    |> Repo.preload(cards: CardQuery.default_order())
+  end
+
+  @doc """
+  Gets a single board.
+
+  Raises `Ecto.NoResultsError` if the Board does not exist.
+
+  ## Examples
+
+      iex> get_board!(123)
+      %Board{}
+
+      iex> get_board!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_board!(id, card_filters) do
+    Board
+    |> Repo.get!(id)
+    |> Repo.preload(cards: CardQuery.filter(card_filters))
   end
 
   @doc """
@@ -55,7 +75,7 @@ defmodule Retrospectivex.Retrospectives.Managers.Board do
   def get_board_by_slug_and_uuid!(slug, uuid) do
     Board
     |> Repo.get_by!(slug: slug, uuid: uuid)
-    |> Repo.preload(cards: from(c in Card, order_by: c.inserted_at))
+    |> Repo.preload(cards: CardQuery.default_order())
   end
 
   @doc """

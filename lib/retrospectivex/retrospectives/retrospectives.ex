@@ -12,6 +12,7 @@ defmodule Retrospectivex.Retrospectives do
   defdelegate delete_board(board), to: BoardManager
   defdelegate get_board_by_slug_and_uuid!(slug, uuid), to: BoardManager
   defdelegate get_board!(id), to: BoardManager
+  defdelegate get_board!(id, filter_cards), to: BoardManager
   defdelegate list_boards, to: BoardManager
   defdelegate update_board(board, attrs), to: BoardManager
 
