@@ -1,28 +1,31 @@
-<div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
-  <%= form_for @conn, nil, [as: "board_filters", id: "board-filters-form", class: "form-inline"], fn f -> %>
-    <% frankt_data = [action: "board:filter_cards", target: "#board-filters-form", auto: true] %>
+<div class="row board-actions mt-3 mb-2">
+  <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
+    <%= form_for @conn, nil, [as: "card_filters", id: "board-filters-form", class: "form-inline"], fn f -> %>
+      <% frankt_data = [action: "board:filter_cards", target: "#board-filters-form", auto: true] %>
 
-    <%= select f, :order_by, board_order_by_options(), class: "form-control form-control-sm mr-2 mb-2",
-        prompt: gettext("Order by"), data: [frankt: frankt_data] %>
-    <%= text_input f, :query, class: "form-control form-control-sm mr-2 mb-2",
-        placeholder: gettext("Search card..."), data: [frankt: frankt_data] %>
-  <% end %>
-</div>
+      <%= hidden_input f, :board_id, value: @board.id %>
+      <%= select f, :order_by, board_order_by_options(), class: "form-control form-control-sm mr-2 mb-2",
+          prompt: gettext("Order by"), data: [frankt: frankt_data] %>
+      <%= text_input f, :query, class: "form-control form-control-sm mr-2 mb-2",
+          placeholder: gettext("Search card..."), data: [frankt: frankt_data] %>
+    <% end %>
+  </div>
 
-<div class="col-lg-4 offset-lg-2 col-md-2 offset-md-2 col-sm-2 offset-sm-2 text-right">
-  <button type="button" class="btn btn-primary btn-sm">
-    <i class="fa fa-times" aria-hidden="true"></i>
-  </button>
-  <%= link(raw("<i class='fa fa-trash' aria-hidden='true'></i>"), to: "#",
-      class: "btn btn-danger btn-sm",
-      title: gettext("Delete board"),
-      data: [
-        frankt: [
-          action: "board:delete_modal",
-          data: Poison.encode!(%{
-            "board_id" => @board.id
-          })
-        ]
-      ])
-  %>
+  <div class="col-lg-4 offset-lg-2 col-md-2 offset-md-2 col-sm-2 offset-sm-2 text-right">
+    <button type="button" class="btn btn-primary btn-sm">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <%= link(raw("<i class='fa fa-trash' aria-hidden='true'></i>"), to: "#",
+        class: "btn btn-danger btn-sm",
+        title: gettext("Delete board"),
+        data: [
+          frankt: [
+            action: "board:delete_modal",
+            data: Poison.encode!(%{
+              "board_id" => @board.id
+            })
+          ]
+        ])
+    %>
+  </div>
 </div>

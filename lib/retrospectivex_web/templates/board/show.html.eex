@@ -15,10 +15,5 @@
   </div>
 </div>
 
-<div class="row board-actions mt-3 mb-2">
-  <%= render(ShowComponentView, "_board_actions.html", assigns) %>
-</div>
-
-<div class="row board-stacks" id="board-stacks">
-  <%= render(ShowComponentView, "_board_stacks.html", assigns) %>
-</div>
+<%= render(ShowComponentView, "_board_actions.html", assigns) %>
+<%= render(ShowComponentView, "_board_stacks.html", assigns) %>

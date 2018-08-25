@@ -34,7 +34,7 @@
               <%= format_date(card.inserted_at) %>
             </div>
             <div class="list-card-votes badge badge-primary">
-              <%= gettext("%{votes} votes", votes: card.votes || 0) %>
+              <%= gettext("%{votes} votes", votes: card.votes) %>
             </div>
 
             <div class="list-card-actions">
@@ -48,7 +48,8 @@
                         "card_id" => card.id,
                         "kind" => @kind,
                         "origin" => "board"
-                      })
+                      }),
+                      target: "#board-filters-form"
                     ]
                   ])
               %>
