@@ -6,7 +6,12 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
   alias RetrospectivexWeb.Board.Component.ShowView, as: ShowComponentView
   alias RetrospectivexWeb.BoardView
 
-  def filter_boards(%{"board_filters" => board_filters}, socket) do
+  def filter_cards(
+        %{"card_filters" => card_filters = %{"board_id" => board_id}},
+        socket
+      ) do
+    board = Retrospectives.get_board!(board_id, card_filters)
+    update_stacks(board, socket)
   end
 
   def delete_modal(%{"board_id" => board_id}, socket) do
