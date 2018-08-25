@@ -10,8 +10,7 @@ defmodule Retrospectivex.Retrospectives.Queries.Card do
   def filter(filters) do
     Card
     |> filter_by_board(filters["board_id"])
-    |> filter_by_title(filters["query"])
-    |> filter_by_body(filters["query"])
+    |> filter_by_string(filters["query"])
     |> order_cards_by(filters["order_by"])
   end
 
@@ -20,15 +19,14 @@ defmodule Retrospectivex.Retrospectives.Queries.Card do
   defp filter_by_board(query, board_id),
     do: from(c in query, where: c.board_id == ^board_id)
 
-  defp filter_by_body(query, nil), do: query
+  defp filter_by_string(query, nil), do: query
 
-  defp filter_by_body(query, string),
-    do: from(c in query, where: ilike(c.body, ^"%#{sanitize(string)}%"))
-
-  defp filter_by_title(query, nil), do: query
-
-  defp filter_by_title(query, string),
-    do: from(c in query, where: ilike(c.title, ^"%#{sanitize(string)}%"))
+  defp filter_by_string(query, string) do
+    from(c in query,
+      where: ilike(c.title, ^"%#{sanitize(string)}%"),
+      or_where: ilike(c.body, ^"%#{sanitize(string)}%")
+    )
+  end
 
   defp order_cards_by(query, nil),
     do: from(c in query, order_by: [desc: :inserted_at])
