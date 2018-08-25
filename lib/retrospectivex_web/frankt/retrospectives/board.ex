@@ -32,4 +32,20 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
         nil
     end
   end
+
+  defp update_stacks(board, socket) do
+    push(socket, "replace_with", %{
+      target: "#board-stacks",
+      html:
+        render(
+          socket,
+          ShowComponentView,
+          "_board_stacks.html",
+          conn: %Plug.Conn{},
+          board: board
+        )
+    })
+
+    push(socket, "setup_accordion", %{})
+  end
 end
