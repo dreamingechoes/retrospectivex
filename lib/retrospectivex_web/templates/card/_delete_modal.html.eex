@@ -21,7 +21,8 @@
           data: Poison.encode!(%{
             "card_id" => @card_id,
             "kind" => @kind
-          })
+          }),
+          target: "#board-filters-form"
         ]
       ])
   %>

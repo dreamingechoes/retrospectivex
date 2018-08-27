@@ -31,7 +31,8 @@
             "card_id" => @card.id,
             "kind" => @kind,
             "origin" => "card"
-          })
+          }),
+          target: "#board-filters-form"
         ]
       ])
   %>

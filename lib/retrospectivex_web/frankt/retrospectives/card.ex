@@ -25,7 +25,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Card do
 
     case Retrospectives.create_card(card_params) do
       {:ok, card} ->
-        update_stack(kind, card.board_id, socket)
+        update_stack(kind, card.board_id, %{}, socket)
 
       _error ->
         nil
@@ -33,20 +33,28 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Card do
   end
 
   def vote(
-        %{"card_id" => card_id, "kind" => kind, "origin" => origin},
+        %{
+          "card_id" => card_id,
+          "kind" => kind,
+          "origin" => origin,
+          "card_filters" => card_filters
+        },
         socket
       ) do
     card = Retrospectives.get_card!(card_id)
 
     case Retrospectives.update_card(card, %{votes: upvote(card)}) do
       {:ok, card} ->
-        update_stack(kind, card.board_id, socket)
+        update_stack(kind, card.board_id, card_filters, socket)
 
         case origin do
           "card" ->
             html = render(socket, CardView, "show.html", card: card, kind: kind)
 
             push(socket, "update_modal", %{html: html})
+
+          _ ->
+            nil
         end
 
       _error ->
@@ -78,14 +86,17 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Card do
   end
 
   def update(
-        %{"card_params" => card_params = %{"id" => card_id, "kind" => kind}},
+        %{
+          "card_params" => card_params = %{"id" => card_id, "kind" => kind},
+          "card_filters" => card_filters
+        },
         socket
       ) do
     card = Retrospectives.get_card!(card_id)
 
     case Retrospectives.update_card(card, card_params) do
       {:ok, card} ->
-        update_stack(kind, card.board_id, socket)
+        update_stack(kind, card.board_id, card_filters, socket)
 
         html = render(socket, CardView, "show.html", card: card, kind: kind)
 
@@ -109,12 +120,15 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Card do
     push(socket, "open_modal", %{html: html})
   end
 
-  def delete(%{"card_id" => card_id, "kind" => kind}, socket) do
+  def delete(
+        %{"card_id" => card_id, "kind" => kind, "card_filters" => card_filters},
+        socket
+      ) do
     card = Retrospectives.get_card!(card_id)
 
     case Retrospectives.delete_card(card) do
       {:ok, card} ->
-        update_stack(kind, card.board_id, socket)
+        update_stack(kind, card.board_id, card_filters, socket)
         push(socket, "close_modal", %{})
 
       _error ->
@@ -122,7 +136,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Card do
     end
   end
 
-  defp update_stack(kind, board_id, socket) do
+  defp update_stack(kind, board_id, card_filters, socket) do
     push(socket, "replace_with", %{
       target: "##{kind}",
       html:
@@ -131,7 +145,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Card do
           ShowComponentView,
           "_cards.html",
           conn: %Plug.Conn{},
-          board: Retrospectives.get_board!(board_id),
+          board: Retrospectives.get_board!(board_id, card_filters),
           kind: String.to_atom(kind)
         )
     })
