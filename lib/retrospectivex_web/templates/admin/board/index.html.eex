@@ -8,7 +8,7 @@
           <th scope="col">#</th>
           <th scope="col"><%= gettext("Title") %></th>
           <th scope="col"><%= gettext("Slug") %></th>
-          <th scope="col"><%= gettext("Status") %></th>
+          <th scope="col"><%= gettext("State") %></th>
           <th scope="col">&nbsp;</th>
         </tr>
       </thead>
@@ -18,7 +18,7 @@
           <th scope="row"><%= board.id %></th>
           <td><%= board.title %></td>
           <td><%= board.slug %></td>
-          <td><%= board.status %></td>
+          <td><%= board.state %></td>
 
           <td class="text-right">
             <%= link gettext("Show"), to: admin_board_path(@conn, :show, board), class: "btn btn-success btn-md" %>

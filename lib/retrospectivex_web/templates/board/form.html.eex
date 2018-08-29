@@ -7,7 +7,7 @@
         </div>
       <% end %>
 
-      <%= hidden_input f, :status %>
+      <%= hidden_input f, :state %>
 
       <div class="form-group">
         <%= label f, :title, class: "control-label" %>

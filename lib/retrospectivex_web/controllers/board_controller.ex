@@ -5,7 +5,7 @@ defmodule RetrospectivexWeb.BoardController do
   alias Retrospectivex.Retrospectives.Schemas.Board
 
   def new(conn, _params) do
-    changeset = Retrospectives.change_board(%Board{status: :opened})
+    changeset = Retrospectives.change_board(%Board{state: :opened})
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -33,7 +33,7 @@ defmodule RetrospectivexWeb.BoardController do
         render(
           conn,
           "new.html",
-          changeset: Retrospectives.change_board(%Board{status: :opened})
+          changeset: Retrospectives.change_board(%Board{state: :opened})
         )
     end
   end

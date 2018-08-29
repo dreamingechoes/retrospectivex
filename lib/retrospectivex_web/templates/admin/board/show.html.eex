@@ -14,8 +14,8 @@
       </li>
 
       <li>
-        <strong><%= gettext("Status:") %></strong>
-        <%= @board.status %>
+        <strong><%= gettext("State:") %></strong>
+        <%= @board.state %>
       </li>
 
       <li>

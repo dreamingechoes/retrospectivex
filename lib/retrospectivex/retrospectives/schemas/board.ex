@@ -10,7 +10,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
     field(:description, :string)
     field(:moderator, :string)
     field(:slug, :string)
-    field(:status, BoardStatusEnum)
+    field(:state, BoardStateEnum)
     field(:title, :string)
     field(:uuid, :binary_id)
 
@@ -22,8 +22,8 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
   @doc false
   def changeset(board, attrs) do
     board
-    |> cast(attrs, [:title, :description, :status, :moderator, :date])
-    |> validate_required([:title, :description, :status])
+    |> cast(attrs, [:title, :description, :state, :moderator, :date])
+    |> validate_required([:title, :description, :state])
     |> generate_slug()
   end
 
