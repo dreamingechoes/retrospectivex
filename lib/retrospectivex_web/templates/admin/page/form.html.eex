@@ -18,9 +18,9 @@
           </div>
 
           <div class="form-group">
-            <%= label f, :status, class: "control-label" %>
-            <%= select f, :status, options_for_status(), class: "form-control", prompt: gettext("Select a status...") %>
-            <%= error_tag f, :status %>
+            <%= label f, :state, class: "control-label" %>
+            <%= select f, :state, options_for_state(), class: "form-control", prompt: gettext("Select a state...") %>
+            <%= error_tag f, :state %>
           </div>
 
           <div class="form-group">

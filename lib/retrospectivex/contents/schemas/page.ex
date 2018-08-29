@@ -8,7 +8,7 @@ defmodule Retrospectivex.Contents.Schemas.Page do
   schema "pages" do
     field(:body, :string)
     field(:slug, :string)
-    field(:status, PageStatusEnum)
+    field(:state, PageStateEnum)
     field(:title, :string)
 
     timestamps()

@@ -28,8 +28,8 @@
       </li>
 
       <li>
-        <strong><%= gettext("Status:") %></strong>
-        <%= @page.status %>
+        <strong><%= gettext("State:") %></strong>
+        <%= @page.state %>
       </li>
     </ul>
   </div>
