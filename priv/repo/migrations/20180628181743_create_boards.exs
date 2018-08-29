@@ -5,7 +5,7 @@ defmodule Retrospectivex.Repo.Migrations.CreateBoards do
     create table(:boards) do
       add(:description, :text)
       add(:slug, :text)
-      add(:status, :integer)
+      add(:state, :integer)
       add(:title, :text)
       add(:uuid, :uuid, default: fragment("uuid_generate_v4()"))
 
