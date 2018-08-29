@@ -3,8 +3,17 @@ defmodule Retrospectivex.Retrospectives do
   The Retrospectives context.
   """
 
+  alias Retrospectivex.Retrospectives.Managers.ActionItem, as: ActionItemManager
   alias Retrospectivex.Retrospectives.Managers.Board, as: BoardManager
   alias Retrospectivex.Retrospectives.Managers.Card, as: CardManager
+
+  # ActionItem API
+  defdelegate change_action_item(action_item), to: ActionItemManager
+  defdelegate create_action_item(attrs), to: ActionItemManager
+  defdelegate delete_action_item(action_item), to: ActionItemManager
+  defdelegate get_action_item!(id), to: ActionItemManager
+  defdelegate list_action_items, to: ActionItemManager
+  defdelegate update_action_item(action_item, attrs), to: ActionItemManager
 
   # Board API
   defdelegate change_board(board), to: BoardManager
