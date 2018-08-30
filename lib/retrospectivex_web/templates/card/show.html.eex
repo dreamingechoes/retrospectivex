@@ -49,4 +49,17 @@
         ]
       ])
   %>
+
+  <%= link(raw("<i class='fa fa-plus' aria-hidden='true'></i>"), to: "#",
+    class: "btn btn-secondary btn-sm",
+    title: gettext("Add action item related to this card"),
+    data: [
+      frankt: [
+        action: "action_item:create_modal",
+        data: Poison.encode!(%{
+          "card_id" => @card.id
+        })
+      ]
+    ])
+  %>
 </div>
