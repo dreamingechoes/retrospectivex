@@ -3,7 +3,7 @@ defmodule Retrospectivex.Retrospectives.Queries.Card do
 
   alias Retrospectivex.Retrospectives.Schemas.Card
 
-  def default_order, do: from(c in Card, order_by: c.inserted_at)
+  def default_order, do: from(c in Card, order_by: [asc: :inserted_at])
 
   def filter(nil), do: from(c in Card)
 
@@ -29,7 +29,7 @@ defmodule Retrospectivex.Retrospectives.Queries.Card do
   end
 
   defp order_cards_by(query, nil),
-    do: from(c in query, order_by: [desc: :inserted_at])
+    do: from(c in query, order_by: [asc: :inserted_at])
 
   defp order_cards_by(query, field),
     do: from(c in query, order_by: [desc: ^:"#{field}", desc: :id])
