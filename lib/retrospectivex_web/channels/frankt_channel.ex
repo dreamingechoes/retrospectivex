@@ -10,6 +10,7 @@ defmodule RetrospectivexWeb.FranktChannel do
       "global" => RetrospectivexWeb.Frankt.Global,
 
       # Retrospectives context modules
+      "action_item" => RetrospectivexWeb.Frankt.Retrospectives.ActionItem,
       "card" => RetrospectivexWeb.Frankt.Retrospectives.Card,
       "board" => RetrospectivexWeb.Frankt.Retrospectives.Board
     }
