@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h5 class="modal-title">
+    <%= @action_item.title %>
+  </h5>
+
+  <%= link raw("<span aria-hidden='true'>&times;</span>"),
+      to: "#", class: "btn btn-light btn-sm",
+      data: [frankt: [action: "global:close_modal"]] %>
+</div>
+
+<div class="modal-body action-item-body-content">
+  <div class="row">
+    <div class="col">
+      <%= raw(Earmark.as_html!(@action_item.body || "")) %>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <%= link(raw("<i class='fa fa-edit' aria-hidden='true'></i>"), to: "#",
+      class: "btn btn-primary btn-sm",
+      title: gettext("Edit action item"),
+      data: [
+        frankt: [
+          action: "action_item:edit_modal",
+          data: Poison.encode!(%{
+            "action_item_id" => @action_item.id
+          })
+        ]
+      ])
+  %>
+</div>
