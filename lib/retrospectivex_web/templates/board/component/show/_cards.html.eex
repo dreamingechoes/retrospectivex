@@ -15,7 +15,7 @@
           ]
         ])
     %>
-    <a class="btn btn-light pull-right btn-sm" href="#" data-toggle="collapse"
+    <a class="btn btn-light pull-right btn-sm mr-2" href="#" data-toggle="collapse"
       data-target="#<%= @kind %>_stack_collapse" aria-expanded="true"
       aria-controls="<%= @kind %>_stack_collapse">
       <i class='fa fa-chevron-up'></i>
@@ -88,7 +88,7 @@
         <% end %>
       <% else %>
         <li class="list-group-item list-group-item-action text-center">
-          <%= gettext("There's no cards yet") %>
+          <%= gettext("There's no cards") %>
         </li>
       <% end %>
     </ul>
