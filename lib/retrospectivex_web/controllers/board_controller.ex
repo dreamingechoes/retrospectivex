@@ -40,6 +40,8 @@ defmodule RetrospectivexWeb.BoardController do
 
   def show(conn, %{"slug" => slug, "u" => uuid}) do
     board = Retrospectives.get_board_by_slug_and_uuid!(slug, uuid)
-    render(conn, "show.html", board: board)
+    action_items = Retrospectives.list_action_items_by_board(board)
+
+    render(conn, "show.html", board: board, action_items: action_items)
   end
 end
