@@ -13,6 +13,7 @@ defmodule Retrospectivex.Retrospectives do
   defdelegate delete_action_item(action_item), to: ActionItemManager
   defdelegate get_action_item!(id), to: ActionItemManager
   defdelegate list_action_items, to: ActionItemManager
+  defdelegate list_action_items_by_board(board), to: ActionItemManager
   defdelegate update_action_item(action_item, attrs), to: ActionItemManager
 
   # Board API

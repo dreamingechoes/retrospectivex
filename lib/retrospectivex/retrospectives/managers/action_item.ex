@@ -2,6 +2,7 @@ defmodule Retrospectivex.Retrospectives.Managers.ActionItem do
   import Ecto.Query, warn: false
 
   alias Retrospectivex.Repo
+  alias Retrospectivex.Retrospectives.Queries.ActionItem, as: Query
   alias Retrospectivex.Retrospectives.Schemas.ActionItem
 
   @doc """
@@ -15,6 +16,21 @@ defmodule Retrospectivex.Retrospectives.Managers.ActionItem do
   """
   def list_action_items do
     Repo.all(ActionItem)
+  end
+
+  @doc """
+  Returns the list of action_items by board.
+
+  ## Examples
+
+      iex> list_action_items_by_board(board)
+      [%ActionItem{}, ...]
+
+  """
+  def list_action_items_by_board(board) do
+    ActionItem
+    |> Query.by_board(board)
+    |> Repo.all()
   end
 
   @doc """
