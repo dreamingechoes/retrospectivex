@@ -19,7 +19,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.ActionItem do
   @doc false
   def changeset(action_item, attrs) do
     action_item
-    |> cast(attrs, [:title, :body, :state, :responsible])
+    |> cast(attrs, [:title, :body, :state, :responsible, :card_id])
     |> validate_required([:title])
     |> cast_assoc(:card)
   end
