@@ -12,8 +12,8 @@
   <div id="action_items_stack_collapse" class="collapse stack show" aria-labelledby="action_items_stack_heading"
     data-parent="#action-items">
     <ul class="list-group" id="action_item_list">
-      <%= if false do %>
-        <%= for action_item <- [] do %>
+      <%= if Kernel.length(@action_items) > 0 do %>
+        <%= for action_item <- @action_items do %>
           <li class="list-group-item list-group-item-action">
             <div class="list-card">
               <div class="list-card-title"> <%= action_item.title %> </div>
