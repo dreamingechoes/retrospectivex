@@ -3,7 +3,6 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.ActionItem do
 
   alias Retrospectivex.Retrospectives
   alias Retrospectivex.Retrospectives.Schemas.ActionItem
-  alias RetrospectivexWeb.Board.Component.ShowView, as: ShowComponentView
   alias RetrospectivexWeb.ActionItemView
 
   def create_modal(%{"card_id" => card_id}, socket) do
@@ -93,8 +92,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.ActionItem do
 
   def delete(
         %{
-          "action_item_id" => action_item_id,
-          "action_item_filters" => action_item_filters
+          "action_item_id" => action_item_id
         },
         socket
       ) do
@@ -102,7 +100,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.ActionItem do
 
     case Retrospectives.delete_action_item(action_item) do
       {:ok, action_item} ->
-        update_stack(action_item.card_id, action_item_filters, socket)
+        update_stack(action_item.card_id, %{}, socket)
         push(socket, "close_modal", %{})
 
       _error ->
@@ -116,7 +114,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.ActionItem do
       html:
         render(
           socket,
-          ShowComponentView,
+          ActionItemView,
           "_action_items.html",
           conn: %Plug.Conn{},
           board: Retrospectives.get_board!(board_id, action_item_filters)
