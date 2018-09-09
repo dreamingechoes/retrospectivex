@@ -43,13 +43,21 @@ defmodule RetrospectivexWeb.Router do
     scope "/" do
       pipe_through([:browser, :browser_auth])
 
+      # OAuth resources
+      scope "/oauth", OAuth, as: :oauth do
+        get("/:provider", AuthController, :index)
+        get("/:provider/callback", AuthController, :callback)
+      end
+
+      # Admin login resources
+      get("/logout", SessionController, :delete)
       resources("/session", SessionController, only: [:new, :create])
 
-      # Log out resource
-      get("/logout", SessionController, :delete)
-
+      # Retrospectives context resources
       resources("/boards", BoardController, only: [:new, :create])
       resources("/for", BoardController, only: [:show], param: "slug")
+
+      # Contents context resources
       resources("/", PageController, only: [:index, :show], param: "slug")
     end
   end
