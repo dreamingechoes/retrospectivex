@@ -53,6 +53,9 @@ defmodule RetrospectivexWeb.Router do
       get("/logout", SessionController, :delete)
       resources("/session", SessionController, only: [:new, :create])
 
+      # Dashboard resources
+      get("/dashboard", DashboardController, :index)
+
       # Retrospectives context resources
       resources("/boards", BoardController, only: [:new, :create])
       resources("/for", BoardController, only: [:show], param: "slug")
