@@ -2,9 +2,7 @@ defmodule RetrospectivexWeb.Frankt.Retrospectives.Board do
   use RetrospectivexWeb, :frankt
 
   alias Retrospectivex.Retrospectives
-  alias Retrospectivex.Retrospectives.Schemas.Board
   alias RetrospectivexWeb.Board.Component.ShowView, as: ShowComponentView
-  alias RetrospectivexWeb.BoardView
 
   def filter_cards(
         %{"card_filters" => card_filters = %{"board_id" => board_id}},
