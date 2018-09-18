@@ -14,7 +14,8 @@ defmodule Google do
 
   # Public API
   def client do
-    Application.get_env(:retrospectivex, Google)
+    :retrospectivex
+    |> Application.get_env(Google)
     |> Keyword.merge(config())
     |> OAuth2.Client.new()
   end

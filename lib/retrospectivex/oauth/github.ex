@@ -14,7 +14,8 @@ defmodule GitHub do
 
   # Public API
   def client do
-    Application.get_env(:retrospectivex, GitHub)
+    :retrospectivex
+    |> Application.get_env(GitHub)
     |> Keyword.merge(config())
     |> OAuth2.Client.new()
   end
