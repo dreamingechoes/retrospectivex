@@ -9,7 +9,7 @@ defmodule Retrospectivex.Accounts.Schemas.User do
 
   schema "users" do
     field(:external_id, :string)
-    field(:source, :integer)
+    field(:source, UserSourceEnum)
 
     timestamps()
 
