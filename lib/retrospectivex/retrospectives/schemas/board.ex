@@ -8,6 +8,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
   schema "boards" do
     field(:date, :naive_datetime)
     field(:description, :string)
+    field(:max_votes, :integer, default: 0)
     field(:moderator, :string)
     field(:slug, :string)
     field(:state, BoardStateEnum)
@@ -24,6 +25,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
     board
     |> cast(attrs, [:title, :description, :state, :moderator, :date])
     |> validate_required([:title, :description, :state])
+    |> validate_number(:max_votes, greater_than_or_equal_to: 0)
     |> generate_slug()
   end
 
