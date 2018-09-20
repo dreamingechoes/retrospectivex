@@ -3,6 +3,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
 
   import Ecto.Changeset
 
+  alias Retrospectivex.Accounts.Schemas.User
   alias Retrospectivex.Retrospectives.Schemas.Card
 
   schema "boards" do
@@ -17,15 +18,26 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
 
     timestamps()
 
+    # Associations
+    belongs_to(:user, User)
     has_many(:cards, Card, on_delete: :delete_all)
   end
 
   @doc false
   def changeset(board, attrs) do
     board
-    |> cast(attrs, [:title, :description, :state, :moderator, :date])
-    |> validate_required([:title, :description, :state])
+    |> cast(attrs, [
+      :title,
+      :description,
+      :state,
+      :moderator,
+      :date,
+      :max_votes,
+      :user_id
+    ])
+    |> validate_required([:title, :state, :max_votes, :user_id])
     |> validate_number(:max_votes, greater_than_or_equal_to: 0)
+    |> cast_assoc(:user)
     |> generate_slug()
   end
 
