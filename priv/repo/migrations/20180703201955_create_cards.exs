@@ -5,7 +5,7 @@ defmodule Retrospectivex.Repo.Migrations.CreateCards do
     create table(:cards) do
       add(:board_id, references(:boards, on_delete: :delete_all))
       add(:body, :text)
-      add(:title, :text)
+      add(:title, :string, null: false)
       add(:votes, :integer)
 
       timestamps()

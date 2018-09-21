@@ -7,7 +7,7 @@ defmodule Retrospectivex.Repo.Migrations.CreatePages do
       add(:seo_info, :map)
       add(:slug, :text)
       add(:state, :integer)
-      add(:title, :text)
+      add(:title, :text, null: false)
 
       timestamps()
     end

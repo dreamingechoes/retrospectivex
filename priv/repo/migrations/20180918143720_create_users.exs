@@ -3,8 +3,8 @@ defmodule Retrospectivex.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add(:source, :integer)
-      add(:external_id, :string, unique: true)
+      add(:source, :integer, null: false)
+      add(:external_id, :string, unique: true, null: false)
 
       timestamps()
     end

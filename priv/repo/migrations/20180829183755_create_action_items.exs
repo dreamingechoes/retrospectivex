@@ -7,7 +7,7 @@ defmodule Retrospectivex.Repo.Migrations.CreateActionItems do
       add(:card_id, references(:cards, on_delete: :delete_all))
       add(:state, :integer)
       add(:responsible, :string)
-      add(:title, :text)
+      add(:title, :string, null: false)
 
       timestamps()
     end
