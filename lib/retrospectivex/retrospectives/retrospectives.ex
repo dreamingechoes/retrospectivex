@@ -6,6 +6,7 @@ defmodule Retrospectivex.Retrospectives do
   alias Retrospectivex.Retrospectives.Managers.ActionItem, as: ActionItemManager
   alias Retrospectivex.Retrospectives.Managers.Board, as: BoardManager
   alias Retrospectivex.Retrospectives.Managers.Card, as: CardManager
+  alias Retrospectivex.Retrospectives.Managers.Team, as: TeamManager
 
   # ActionItem API
   defdelegate change_action_item(action_item), to: ActionItemManager
@@ -33,4 +34,12 @@ defmodule Retrospectivex.Retrospectives do
   defdelegate get_card!(id), to: CardManager
   defdelegate list_cards, to: CardManager
   defdelegate update_card(card, attrs), to: CardManager
+
+  # Team API
+  defdelegate change_team(team), to: TeamManager
+  defdelegate create_team(attrs), to: TeamManager
+  defdelegate delete_team(team), to: TeamManager
+  defdelegate get_team!(id), to: TeamManager
+  defdelegate list_teams, to: TeamManager
+  defdelegate update_team(team, attrs), to: TeamManager
 end
