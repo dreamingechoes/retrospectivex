@@ -31,7 +31,11 @@ defmodule Retrospectivex.Accounts.Managers.User do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    User
+    |> Repo.get!(id)
+    |> Repo.preload([:boards, :teams])
+  end
 
   @doc """
   Gets a single user by email.
