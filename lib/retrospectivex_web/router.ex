@@ -57,11 +57,11 @@ defmodule RetrospectivexWeb.Router do
       get("/dashboard", DashboardController, :index)
 
       # Retrospectives context resources
-      resources("/boards", BoardController, only: [:new, :create])
-      resources("/for", BoardController, only: [:show], param: "slug")
+      resources("/boards", Retrospectives.BoardController, only: [:new, :create])
+      resources("/for", Retrospectives.BoardController, only: [:show], param: "slug")
 
       # Contents context resources
-      resources("/", PageController, only: [:index, :show], param: "slug")
+      resources("/", Contents.PageController, only: [:index, :show], param: "slug")
     end
   end
 end

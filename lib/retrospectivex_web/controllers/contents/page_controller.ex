@@ -1,4 +1,4 @@
-defmodule RetrospectivexWeb.PageController do
+defmodule RetrospectivexWeb.Contents.PageController do
   use RetrospectivexWeb, :controller
 
   alias Retrospectivex.Contents

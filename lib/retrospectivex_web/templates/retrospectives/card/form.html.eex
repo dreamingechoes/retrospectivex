@@ -19,10 +19,10 @@
 
     <div class="form-group">
       <%= label f, :title, class: "control-label" %>
-      <%= text_input f, :title, class: "form-control", required: true, maxlength: 100 %>
+      <%= text_input f, :title, class: "form-control", required: true, maxlength: 255 %>
       <%= error_tag f, :title %>
       <small class="form-text text-muted">
-        <%= gettext("* This field is required (max. length 100 characters)") %>
+        <%= gettext("* This field is required (max. length 255 characters)") %>
       </small>
     </div>
 

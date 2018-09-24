@@ -1,4 +1,4 @@
-defmodule RetrospectivexWeb.CardView do
+defmodule RetrospectivexWeb.Retrospectives.CardView do
   use RetrospectivexWeb, :view
 
   def card_form_action(%{data: %{id: nil}}), do: "card:create"

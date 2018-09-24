@@ -1,7 +1,7 @@
-defmodule RetrospectivexWeb.Board.Component.ShowView do
+defmodule RetrospectivexWeb.Retrospectives.Board.Component.ShowView do
   use RetrospectivexWeb, :view
 
-  import RetrospectivexWeb.BoardView, only: [format_date: 1]
+  import RetrospectivexWeb.Retrospectives.BoardView, only: [format_date: 1]
 
   defp board_order_by_options do
     [

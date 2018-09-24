@@ -1,4 +1,4 @@
-defmodule RetrospectivexWeb.ActionItemView do
+defmodule RetrospectivexWeb.Retrospectives.ActionItemView do
   use RetrospectivexWeb, :view
 
   def action_item_form_action(%{data: %{id: nil}}), do: "action_item:create"

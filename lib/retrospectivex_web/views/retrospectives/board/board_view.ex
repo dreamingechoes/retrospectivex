@@ -1,7 +1,7 @@
-defmodule RetrospectivexWeb.BoardView do
+defmodule RetrospectivexWeb.Retrospectives.BoardView do
   use RetrospectivexWeb, :view
 
-  alias RetrospectivexWeb.Board.Component.ShowView, as: ShowComponentView
+  alias RetrospectivexWeb.Retrospectives.Board.Component.ShowView, as: ShowComponentView
 
   def format_date(nil), do: gettext("No date specified")
 

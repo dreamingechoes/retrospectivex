@@ -11,17 +11,17 @@
 
       <div class="form-group">
         <%= label f, :title, class: "control-label" %>
-        <%= text_input f, :title, class: "form-control", required: true %>
+        <%= text_input f, :title, class: "form-control", required: true, maxlength: 255 %>
         <%= error_tag f, :title %>
         <small class="form-text text-muted">
-          <%= gettext("* This field is required") %>
+          <%= gettext("* This field is required (max. length 255 characters)") %>
         </small>
       </div>
 
       <div class="form-row mb-2">
         <div class="col">
           <%= label f, :max_votes, class: "control-label" %>
-          <%= number_input f, :max_votes, class: "form-control", required: true %>
+          <%= number_input f, :max_votes, class: "form-control", required: true, min: 0 %>
           <%= error_tag f, :max_votes %>
           <small class="form-text text-muted">
             <%= gettext("* This field is required (min. value 0)") %>
@@ -43,7 +43,7 @@
 
       <div class="form-group">
         <%= label f, :description, class: "control-label" %>
-        <%= textarea f, :description, class: "form-control markdown", rows: 10 %>
+        <%= textarea f, :description, class: "form-control markdown" %>
         <%= error_tag f, :description %>
         <small class="form-text text-muted">
           <%= gettext("* You can enter the content of the description in") %>

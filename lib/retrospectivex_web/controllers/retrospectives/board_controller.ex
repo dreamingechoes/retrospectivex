@@ -1,4 +1,4 @@
-defmodule RetrospectivexWeb.BoardController do
+defmodule RetrospectivexWeb.Retrospectives.BoardController do
   use RetrospectivexWeb, :controller
 
   alias Retrospectivex.Retrospectives
@@ -15,7 +15,7 @@ defmodule RetrospectivexWeb.BoardController do
       }) do
     case Recaptcha.verify(g_recaptcha_response) do
       {:ok, _response} ->
-        case Retrospectives.create_board(board_params) do
+        case Retrospectives.create_board(Map.put(board_params, "user_id", 1)) do
           {:ok, %{id: board_id}} ->
             # We need to reload the board in order to have available the auto-generated
             # 'uuid' field to execute the proper redirection.
