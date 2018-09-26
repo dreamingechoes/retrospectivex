@@ -1,6 +1,8 @@
 defmodule RetrospectivexWeb.OAuth.AuthController do
   use RetrospectivexWeb, :controller
 
+  alias Retrospectivex.Accounts
+
   def index(conn, %{"provider" => provider}) do
     redirect(conn, external: authorize_url!(provider))
   end
@@ -34,18 +36,24 @@ defmodule RetrospectivexWeb.OAuth.AuthController do
   defp get_token!("google", code), do: Google.get_token!(code: code)
 
   defp get_user!("github", client) do
-    %{body: user} = OAuth2.Client.get!(client, "/user")
+    %{body: github_user} = OAuth2.Client.get!(client, "/user")
 
-    %{name: user["name"], avatar: user["avatar_url"]}
+    user =
+      Accounts.get_or_create_user_by_external_id(github_user["id"], :github)
+
+    %{id: user.id, name: github_user["name"], avatar: github_user["avatar_url"]}
   end
 
   defp get_user!("google", client) do
-    %{body: user} =
+    %{body: google_user} =
       OAuth2.Client.get!(
         client,
         "https://www.googleapis.com/plus/v1/people/me/openIdConnect"
       )
 
-    %{name: user["name"], avatar: user["picture"]}
+    user =
+      Accounts.get_or_create_user_by_external_id(google_user["sub"], :google)
+
+    %{id: user.id, name: google_user["name"], avatar: google_user["picture"]}
   end
 end
