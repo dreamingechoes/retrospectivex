@@ -38,21 +38,47 @@ defmodule Retrospectivex.Accounts.Managers.User do
   end
 
   @doc """
-  Gets a single user by email.
+  Gets a single user by external_id.
 
   Raises `Ecto.NoResultsError` if the user does not exist.
 
   ## Examples
 
-      iex> get_user_by_external_id!("external_id)
+      iex> get_user_by_external_id("external_id")
       %User{}
 
-      iex> get_user_by_external_id!("external_id)
+      iex> get_user_by_external_id("external_id")
       ** (Ecto.NoResultsError)
 
   """
-  def get_user_by_external_id!(external_id) do
-    Repo.one!(User, external_id: external_id)
+  def get_user_by_external_id(external_id) do
+    Repo.get_by(User, external_id: external_id)
+  end
+
+  @doc """
+  Gets a single user by external_id.
+
+  Creates a user if the user does not exist.
+
+  ## Examples
+
+      iex> get_or_create_user_by_external_id("external_id", :google)
+      %User{}
+
+      iex> get_or_create_user_by_external_id("external_id", :google)
+      %User{}
+
+  """
+  def get_or_create_user_by_external_id(external_id, source) do
+    case get_user_by_external_id(external_id) do
+      nil ->
+        {:ok, user} = create_user(%{external_id: external_id, source: source})
+
+        user
+
+      user ->
+        user
+    end
   end
 
   @doc """

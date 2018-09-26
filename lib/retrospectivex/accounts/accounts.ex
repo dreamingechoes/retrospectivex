@@ -21,7 +21,11 @@ defmodule Retrospectivex.Accounts do
   defdelegate change_user(user), to: UserManager
   defdelegate create_user(attrs), to: UserManager
   defdelegate delete_user(user), to: UserManager
-  defdelegate get_user_by_external_id!(external_id), to: UserManager
+
+  defdelegate get_or_create_user_by_external_id(external_id, source),
+    to: UserManager
+
+  defdelegate get_user_by_external_id(external_id), to: UserManager
   defdelegate get_user!(id), to: UserManager
   defdelegate list_users, to: UserManager
   defdelegate update_user(user, attrs), to: UserManager
