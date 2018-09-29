@@ -18,7 +18,7 @@ defmodule RetrospectivexWeb.SessionController do
       {:ok, administrator} ->
         conn
         |> Plug.sign_in(administrator)
-        |> put_flash(:success, gettext("Welcome to Retroxpectivex!"))
+        |> put_flash(:success, gettext("Welcome to Retrospectivex!"))
         |> redirect(to: page_path(conn, :index))
 
       {:error, message} ->
