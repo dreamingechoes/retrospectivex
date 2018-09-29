@@ -65,9 +65,6 @@ defmodule Retrospectivex.Accounts.Managers.User do
       iex> get_or_create_user_by_external_id("external_id", :google)
       %User{}
 
-      iex> get_or_create_user_by_external_id("external_id", :google)
-      %User{}
-
   """
   def get_or_create_user_by_external_id(external_id, source) do
     case get_user_by_external_id(external_id) do
