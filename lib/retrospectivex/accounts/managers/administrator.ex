@@ -37,21 +37,21 @@ defmodule Retrospectivex.Accounts.Managers.Administrator do
   @doc """
   Gets a single administrator by email.
 
-  Raises `Ecto.NoResultsError` if the Administrator does not exist.
+  Returns nil if the Administrator does not exist.
 
   ## Examples
 
-      iex> get_administrator_by_email!("some@email.com")
+      iex> get_administrator_by_email("some@email.com")
       %Administrator{}
 
-      iex> get_administrator_by_email!("some@email.com")
-      ** (Ecto.NoResultsError)
+      iex> get_administrator_by_email("some@email.com")
+      nil
 
   """
-  def get_administrator_by_email!(email) do
+  def get_administrator_by_email(email) do
     email
     |> Query.by_email()
-    |> Repo.one!()
+    |> Repo.one()
   end
 
   @doc """
