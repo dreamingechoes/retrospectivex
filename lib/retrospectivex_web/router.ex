@@ -12,11 +12,11 @@ defmodule RetrospectivexWeb.Router do
   pipeline :browser_auth do
     plug(RetrospectivexWeb.Guardian.AuthPipeline)
     plug(RetrospectivexWeb.Plug.CurrentAdmin)
+    plug(RetrospectivexWeb.Plug.CurrentUser)
   end
 
   pipeline :browser_ensure_auth do
     plug(Guardian.Plug.EnsureAuthenticated)
-    plug(RetrospectivexWeb.Plug.CurrentAdmin)
   end
 
   pipeline :admin_layout do
