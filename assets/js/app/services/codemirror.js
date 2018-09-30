@@ -2,7 +2,7 @@ import CodeMirror from "codemirror/lib/codemirror"
 import "codemirror/mode/markdown/markdown"
 
 export function activate(id) {
-  if (document.getElementById(id) !== undefined) {
+  if (document.getElementById(id) !== null) {
     let cm = CodeMirror.fromTextArea(document.getElementById(id), {
       styleActiveLine: true,
       mode: {
