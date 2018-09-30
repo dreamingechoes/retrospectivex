@@ -1,10 +1,17 @@
-<div class="row page-index">
-  <dic class="mt-4 col-lg-4">
-  <h1 class="display-4"><%= gettext("Retrospectivex") %></h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <%= link gettext("Auth with Google"), to: oauth_auth_path(@conn, :index, :google), class: "btn btn-primary btn-sm", role: "button" %>
-  </p>
+<div class="row">
+  <div class="mt-4 col-lg-12">
+    <h1 class="display-4"><%= gettext("Retrospectivex") %></h1>
+    <p class="lead">
+      This is a simple hero unit, a simple jumbotron-style component for calling
+      extra attention to featured content or information.
+    </p>
+    <%= unless @conn.assigns.current_user do %>
+      <p class="lead">
+        <%= link gettext("Auth with Google"), to: oauth_auth_path(@conn, :index, :google),
+            class: "btn btn-primary btn-sm", role: "button" %>
+        <%= link gettext("Auth with Github"), to: oauth_auth_path(@conn, :index, :github),
+            class: "btn btn-primary btn-sm", role: "button" %>
+      </p>
+    <% end %>
   </div>
 </div>

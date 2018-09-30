@@ -31,7 +31,6 @@ h5 {
 
 footer {
   width: 100%;
-  height: 60px;
   line-height: 60px;
   background-color: #555;
   position: absolute;
@@ -55,6 +54,24 @@ footer {
 
 .navbar-icons {
   font-size: 1.4rem;
+}
+
+.user-avatar {
+  text-align: center;
+
+  img {
+    width: 75px;
+  }
+
+  a {
+    color: inherit;
+
+    &:hover,
+    &:visited {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
 }
 
 @include media-breakpoint-up(md) {
