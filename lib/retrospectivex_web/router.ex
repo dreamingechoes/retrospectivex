@@ -65,6 +65,8 @@ defmodule RetrospectivexWeb.Router do
         param: "slug"
       )
 
+      resources("/teams", Retrospectives.TeamController, except: [:index, :show])
+
       # Contents context resources
       resources("/", Contents.PageController,
         only: [:index, :show],
