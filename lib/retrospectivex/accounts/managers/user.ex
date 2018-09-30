@@ -67,6 +67,8 @@ defmodule Retrospectivex.Accounts.Managers.User do
 
   """
   def get_or_create_user_by_external_id(external_id, source) do
+    external_id = to_string(external_id)
+
     case get_user_by_external_id(external_id) do
       nil ->
         {:ok, user} = create_user(%{external_id: external_id, source: source})

@@ -45,6 +45,7 @@ defmodule RetrospectivexWeb.Router do
 
       # OAuth resources
       scope "/oauth", OAuth, as: :oauth do
+        delete("/", AuthController, :delete)
         get("/:provider", AuthController, :index)
         get("/:provider/callback", AuthController, :callback)
       end

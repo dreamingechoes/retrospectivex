@@ -41,7 +41,12 @@ defmodule RetrospectivexWeb.OAuth.AuthController do
     user =
       Accounts.get_or_create_user_by_external_id(github_user["id"], :github)
 
-    %{id: user.id, name: github_user["name"], avatar: github_user["avatar_url"]}
+    %{
+      id: user.id,
+      name: github_user["name"],
+      avatar: github_user["avatar_url"],
+      email: github_user["email"]
+    }
   end
 
   defp get_user!("google", client) do
@@ -54,6 +59,11 @@ defmodule RetrospectivexWeb.OAuth.AuthController do
     user =
       Accounts.get_or_create_user_by_external_id(google_user["sub"], :google)
 
-    %{id: user.id, name: google_user["name"], avatar: google_user["picture"]}
+    %{
+      id: user.id,
+      name: google_user["name"],
+      avatar: google_user["picture"],
+      email: google_user["email"]
+    }
   end
 end
