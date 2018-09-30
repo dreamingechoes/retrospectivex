@@ -6,6 +6,7 @@ defmodule Retrospectivex.Accounts.Schemas.User do
   alias Retrospectivex.Retrospectives.Schemas.ActionItem
   alias Retrospectivex.Retrospectives.Schemas.Board
   alias Retrospectivex.Retrospectives.Schemas.Card
+  alias Retrospectivex.Retrospectives.Schemas.Team
 
   schema "users" do
     field(:external_id, :string)
@@ -17,6 +18,7 @@ defmodule Retrospectivex.Accounts.Schemas.User do
     has_many(:boards, Board, on_delete: :delete_all)
     has_many(:cards, Card, on_delete: :delete_all)
     has_many(:action_items, ActionItem, on_delete: :delete_all)
+    has_many(:teams, Team, on_delete: :delete_all)
   end
 
   @doc false
