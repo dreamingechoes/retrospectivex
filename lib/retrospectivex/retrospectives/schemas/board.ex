@@ -5,6 +5,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
 
   alias Retrospectivex.Accounts.Schemas.User
   alias Retrospectivex.Retrospectives.Schemas.Card
+  alias Retrospectivex.Retrospectives.Schemas.Team
 
   schema "boards" do
     field(:date, :naive_datetime)
@@ -19,6 +20,7 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
     timestamps()
 
     # Associations
+    belongs_to(:team, Team)
     belongs_to(:user, User)
     has_many(:cards, Card, on_delete: :delete_all)
   end
@@ -33,10 +35,12 @@ defmodule Retrospectivex.Retrospectives.Schemas.Board do
       :moderator,
       :date,
       :max_votes,
+      :team_id,
       :user_id
     ])
-    |> validate_required([:title, :state, :max_votes, :user_id])
+    |> validate_required([:title, :state, :max_votes, :team_id, :user_id])
     |> validate_number(:max_votes, greater_than_or_equal_to: 0)
+    |> cast_assoc(:team)
     |> cast_assoc(:user)
     |> generate_slug()
   end
