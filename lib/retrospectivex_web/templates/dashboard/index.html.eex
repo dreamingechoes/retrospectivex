@@ -1,0 +1,12 @@
+<h4> <%= gettext("Dashboard") %> </h4>
+
+
+<h5> <%= gettext("Teams You Own") %> </h5>
+
+<%= link gettext("Add New Team"), to: team_path(@conn, :new) %>
+
+<%= for team <- @teams do %>
+  <%= team.name %>
+<% end %>
+
+<h5> <%= gettext("Teams You Belong To") %> </h5>
