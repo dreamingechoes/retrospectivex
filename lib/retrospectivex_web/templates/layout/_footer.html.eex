@@ -1,7 +1,12 @@
 <footer>
   <div class="container">
-    <p class="m-0 text-center text-white">
-      <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <%= link "dreamingechoes", to: "http://dreamingecho.es" %>
-    </p>
+    <div class="row">
+      <div class="col-md-2 text-white">
+        <%= gettext("© %{year} Retrospectivex", year: DateTime.utc_now().year) %>
+      </div>
+      <div class="col-md-4 offset-md-6 text-right text-white">
+        <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <%= link "dreamingechoes", to: "http://dreamingecho.es" %>
+      </div>
+    </div>
   </div>
 </footer>
