@@ -1,7 +1,7 @@
 defmodule RetrospectivexWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :retrospectivex
 
-  socket("/socket", RetrospectivexWeb.UserSocket)
+  socket("/socket", RetrospectivexWeb.UserSocket, websocket: true, longpoll: false)
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -29,7 +29,7 @@ defmodule RetrospectivexWeb.Endpoint do
     Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
   )
 
   plug(Plug.MethodOverride)

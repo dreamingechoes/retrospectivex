@@ -28,7 +28,7 @@
                     data: [
                       frankt: [
                         action: "action_item:show_modal",
-                        data: Poison.encode!(%{
+                        data: Jason.encode!(%{
                           "action_item_id" => action_item.id
                         })
                       ]
@@ -41,7 +41,7 @@
                     data: [
                       frankt: [
                         action: "action_item:delete_modal",
-                        data: Poison.encode!(%{
+                        data: Jason.encode!(%{
                           "action_item_id" => action_item.id
                         })
                       ]

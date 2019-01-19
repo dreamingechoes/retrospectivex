@@ -21,8 +21,9 @@ defmodule RetrospectivexWeb do
     quote do
       use Phoenix.Controller, namespace: RetrospectivexWeb
       import Plug.Conn
-      import RetrospectivexWeb.Router.Helpers
       import RetrospectivexWeb.Gettext
+
+      alias RetrospectivexWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -38,9 +39,10 @@ defmodule RetrospectivexWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import RetrospectivexWeb.Router.Helpers
       import RetrospectivexWeb.ErrorHelpers
       import RetrospectivexWeb.Gettext
+
+      alias RetrospectivexWeb.Router.Helpers, as: Routes
     end
   end
 

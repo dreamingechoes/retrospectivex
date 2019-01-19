@@ -21,7 +21,7 @@
   </div>
 
   <div class="card-footer">
-    <%= link gettext("Edit"), to: admin_administrator_path(@conn, :edit, @administrator), class: "btn btn-primary" %>
-    <%= link gettext("Back"), to: admin_administrator_path(@conn, :index), class: "btn btn-light" %>
+    <%= link gettext("Edit"), to: Routes.admin_administrator_path(@conn, :edit, @administrator), class: "btn btn-primary" %>
+    <%= link gettext("Back"), to: Routes.admin_administrator_path(@conn, :index), class: "btn btn-light" %>
   </div>
 </div>

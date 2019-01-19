@@ -10,7 +10,7 @@ defmodule RetrospectivexWeb.OAuth.AuthController do
   def delete(conn, _params) do
     conn
     |> configure_session(drop: true)
-    |> redirect(to: page_path(conn, :index))
+    |> redirect(to: Routes.page_path(conn, :index))
   end
 
   def callback(conn, %{"provider" => provider, "code" => code}) do
@@ -21,7 +21,7 @@ defmodule RetrospectivexWeb.OAuth.AuthController do
     conn
     |> put_session(:current_user, user)
     |> put_session(:access_token, client.token.access_token)
-    |> redirect(to: dashboard_path(conn, :index))
+    |> redirect(to: Routes.dashboard_path(conn, :show))
   end
 
   defp authorize_url!("github"), do: GitHub.authorize_url!()

@@ -50,7 +50,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :retrospectivex, Retrospectivex.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "",
   database: "retrospectivex_dev",

@@ -14,7 +14,7 @@
     <meta name="csrf" content="<%= Plug.CSRFProtection.get_csrf_token() %>">
     <meta name="channel" content="frankt">
 
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
   </head>
   <body>
     <%= render("_navbar.html", assigns) %>
@@ -25,6 +25,6 @@
       </main>
     </div>
     <%= render("_footer.html", assigns) %>
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

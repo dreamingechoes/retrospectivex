@@ -1,8 +1,15 @@
 defmodule RetrospectivexWeb.Retrospectives.TeamController do
   use RetrospectivexWeb, :controller
 
+  alias Retrospectivex.Accounts
   alias Retrospectivex.Retrospectives
   alias Retrospectivex.Retrospectives.Schemas.Team
+
+  def index(conn = %{assigns: %{current_user: %{id: id}}}, _params) do
+    user = Accounts.get_user!(id)
+
+    render(conn, "index.html", teams: user.teams)
+  end
 
   def new(conn, _params) do
     changeset = Retrospectives.change_team(%Team{})
@@ -18,7 +25,7 @@ defmodule RetrospectivexWeb.Retrospectives.TeamController do
       {:ok, _team} ->
         conn
         |> put_flash(:info, "Team created successfully.")
-        |> redirect(to: dashboard_path(conn, :index))
+        |> redirect(to: Routes.dashboard_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -38,7 +45,7 @@ defmodule RetrospectivexWeb.Retrospectives.TeamController do
       {:ok, _team} ->
         conn
         |> put_flash(:info, "Team updated successfully.")
-        |> redirect(to: dashboard_path(conn, :index))
+        |> redirect(to: Routes.dashboard_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", team: team, changeset: changeset)
@@ -51,6 +58,6 @@ defmodule RetrospectivexWeb.Retrospectives.TeamController do
 
     conn
     |> put_flash(:info, "Team deleted successfully.")
-    |> redirect(to: dashboard_path(conn, :index))
+    |> redirect(to: Routes.dashboard_path(conn, :index))
   end
 end

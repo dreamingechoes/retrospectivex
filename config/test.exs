@@ -11,7 +11,6 @@ config :logger, level: :warn
 
 # Configure your database
 config :retrospectivex, Retrospectivex.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "",
   database: "retrospectivex_test",

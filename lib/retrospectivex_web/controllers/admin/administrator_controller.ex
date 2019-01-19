@@ -19,7 +19,7 @@ defmodule RetrospectivexWeb.Admin.AdministratorController do
       {:ok, administrator} ->
         conn
         |> put_flash(:info, "Administrator created successfully.")
-        |> redirect(to: admin_administrator_path(conn, :show, administrator))
+        |> redirect(to: Routes.admin_administrator_path(conn, :show, administrator))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -50,7 +50,7 @@ defmodule RetrospectivexWeb.Admin.AdministratorController do
       {:ok, administrator} ->
         conn
         |> put_flash(:info, "Administrator updated successfully.")
-        |> redirect(to: admin_administrator_path(conn, :show, administrator))
+        |> redirect(to: Routes.admin_administrator_path(conn, :show, administrator))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(
@@ -68,6 +68,6 @@ defmodule RetrospectivexWeb.Admin.AdministratorController do
 
     conn
     |> put_flash(:info, "Administrator deleted successfully.")
-    |> redirect(to: admin_administrator_path(conn, :index))
+    |> redirect(to: Routes.admin_administrator_path(conn, :index))
   end
 end

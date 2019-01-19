@@ -35,7 +35,7 @@
   </div>
 
   <div class="card-footer">
-    <%= link gettext("Edit"), to: admin_page_path(@conn, :edit, @page), class: "btn btn-primary" %>
-    <%= link gettext("Back"), to: admin_page_path(@conn, :index), class: "btn btn-light" %>
+    <%= link gettext("Edit"), to: Routes.admin_page_path(@conn, :edit, @page), class: "btn btn-primary" %>
+    <%= link gettext("Back"), to: Routes.admin_page_path(@conn, :index), class: "btn btn-light" %>
   </div>
 </div>

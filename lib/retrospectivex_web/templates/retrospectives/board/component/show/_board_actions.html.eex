@@ -21,7 +21,7 @@
         data: [
           frankt: [
             action: "board:delete_modal",
-            data: Poison.encode!(%{
+            data: Jason.encode!(%{
               "board_id" => @board.id
             })
           ]

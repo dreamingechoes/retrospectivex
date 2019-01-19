@@ -18,7 +18,7 @@
       data: [
         frankt: [
           action: "action_item:delete",
-          data: Poison.encode!(%{
+          data: Jason.encode!(%{
             "action_item_id" => @action_item_id
           })
         ]

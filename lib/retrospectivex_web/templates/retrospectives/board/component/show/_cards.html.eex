@@ -8,7 +8,7 @@
         data: [
           frankt: [
             action: "card:create_modal",
-            data: Poison.encode!(%{
+            data: Jason.encode!(%{
               "board_id" => @board.id,
               "kind" => @kind
             })
@@ -45,7 +45,7 @@
                     data: [
                       frankt: [
                         action: "card:vote",
-                        data: Poison.encode!(%{
+                        data: Jason.encode!(%{
                           "card_id" => card.id,
                           "kind" => @kind,
                           "origin" => "board"
@@ -61,7 +61,7 @@
                     data: [
                       frankt: [
                         action: "card:show_modal",
-                        data: Poison.encode!(%{
+                        data: Jason.encode!(%{
                           "card_id" => card.id,
                           "kind" => @kind
                         })
@@ -75,7 +75,7 @@
                     data: [
                       frankt: [
                         action: "card:delete_modal",
-                        data: Poison.encode!(%{
+                        data: Jason.encode!(%{
                           "card_id" => card.id,
                           "kind" => @kind
                         })

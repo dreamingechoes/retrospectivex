@@ -3,9 +3,9 @@ defmodule RetrospectivexWeb.DashboardController do
 
   alias Retrospectivex.Accounts
 
-  def index(conn = %{assigns: %{current_user: %{id: id}}}, _params) do
+  def show(conn = %{assigns: %{current_user: %{id: id}}}, _params) do
     user = Accounts.get_user!(id)
 
-    render(conn, "index.html", teams: user.teams)
+    render(conn, "show.html", teams: user.teams)
   end
 end

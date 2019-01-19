@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <meta name="csrf" content="<%= Plug.CSRFProtection.get_csrf_token() %>">
 
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/admin.css") %>">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/admin.css") %>">
   </head>
 
   <body>
@@ -21,6 +21,6 @@
       <%= render "_flash_messages.html", assigns %>
       <%= render @view_module, @view_template, assigns %>
     </div>
-    <script src="<%= static_path(@conn, "/js/admin.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/admin.js") %>"></script>
   </body>
 </html>

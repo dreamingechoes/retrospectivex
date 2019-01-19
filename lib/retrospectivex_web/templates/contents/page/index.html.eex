@@ -7,9 +7,9 @@
     </p>
     <%= unless @conn.assigns.current_user do %>
       <p class="lead">
-        <%= link gettext("Auth with Google"), to: oauth_auth_path(@conn, :index, :google),
+        <%= link gettext("Auth with Google"), to: Routes.oauth_auth_path(@conn, :index, :google),
             class: "btn btn-primary btn-sm", role: "button" %>
-        <%= link gettext("Auth with Github"), to: oauth_auth_path(@conn, :index, :github),
+        <%= link gettext("Auth with Github"), to: Routes.oauth_auth_path(@conn, :index, :github),
             class: "btn btn-primary btn-sm", role: "button" %>
       </p>
     <% end %>

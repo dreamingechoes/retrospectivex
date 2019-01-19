@@ -19,7 +19,7 @@ defmodule RetrospectivexWeb.Admin.PageController do
       {:ok, page} ->
         conn
         |> put_flash(:info, "Page created successfully.")
-        |> redirect(to: admin_page_path(conn, :show, page))
+        |> redirect(to: Routes.admin_page_path(conn, :show, page))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule RetrospectivexWeb.Admin.PageController do
       {:ok, page} ->
         conn
         |> put_flash(:info, "Page updated successfully.")
-        |> redirect(to: admin_page_path(conn, :show, page))
+        |> redirect(to: Routes.admin_page_path(conn, :show, page))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", page: page, changeset: changeset)
@@ -57,6 +57,6 @@ defmodule RetrospectivexWeb.Admin.PageController do
 
     conn
     |> put_flash(:info, "Page deleted successfully.")
-    |> redirect(to: admin_page_path(conn, :index))
+    |> redirect(to: Routes.admin_page_path(conn, :index))
   end
 end

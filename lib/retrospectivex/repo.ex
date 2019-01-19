@@ -1,5 +1,7 @@
 defmodule Retrospectivex.Repo do
-  use Ecto.Repo, otp_app: :retrospectivex
+  use Ecto.Repo,
+    otp_app: :retrospectivex,
+    adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the

@@ -24,7 +24,7 @@ defmodule RetrospectivexWeb.Admin.BoardController do
           {:ok, board} ->
             conn
             |> put_flash(:info, "Board created successfully.")
-            |> redirect(to: admin_board_path(conn, :show, board))
+            |> redirect(to: Routes.admin_board_path(conn, :show, board))
 
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "new.html", changeset: changeset)
@@ -57,7 +57,7 @@ defmodule RetrospectivexWeb.Admin.BoardController do
       {:ok, board} ->
         conn
         |> put_flash(:info, "Board updated successfully.")
-        |> redirect(to: admin_board_path(conn, :show, board))
+        |> redirect(to: Routes.admin_board_path(conn, :show, board))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", board: board, changeset: changeset)
@@ -70,6 +70,6 @@ defmodule RetrospectivexWeb.Admin.BoardController do
 
     conn
     |> put_flash(:info, "Board deleted successfully.")
-    |> redirect(to: admin_board_path(conn, :index))
+    |> redirect(to: Routes.admin_board_path(conn, :index))
   end
 end

@@ -12,7 +12,7 @@
         <p class="card-text"><%= gettext("Admin project administrators.") %></p>
       </div>
       <div class="card-footer bg-transparent border-info">
-        <%= link gettext("Go to admin »"), to: admin_administrator_path(@conn, :index) %>
+        <%= link gettext("Go to admin »"), to: Routes.admin_administrator_path(@conn, :index) %>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
         <p class="card-text"><%= gettext("Admin project boards.") %></p>
       </div>
       <div class="card-footer bg-transparent border-info">
-        <%= link gettext("Go to admin »"), to: admin_board_path(@conn, :index) %>
+        <%= link gettext("Go to admin »"), to: Routes.admin_board_path(@conn, :index) %>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
         <p class="card-text"><%= gettext("Admin project pages.") %></p>
       </div>
       <div class="card-footer bg-transparent border-info">
-        <%= link gettext("Go to admin »"), to: admin_page_path(@conn, :index) %>
+        <%= link gettext("Go to admin »"), to: Routes.admin_page_path(@conn, :index) %>
       </div>
     </div>
   </div>

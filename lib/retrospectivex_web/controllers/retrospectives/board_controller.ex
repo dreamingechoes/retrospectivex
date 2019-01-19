@@ -9,13 +9,15 @@ defmodule RetrospectivexWeb.Retrospectives.BoardController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{
+  def create(conn = %{assigns: %{current_user: %{id: user_id}}}, %{
         "board" => board_params,
         "g-recaptcha-response" => g_recaptcha_response
       }) do
     case Recaptcha.verify(g_recaptcha_response) do
       {:ok, _response} ->
-        case Retrospectives.create_board(Map.put(board_params, "user_id", 1)) do
+        case Retrospectives.create_board(
+               Map.put(board_params, "user_id", user_id)
+             ) do
           {:ok, %{id: board_id}} ->
             # We need to reload the board in order to have available the auto-generated
             # 'uuid' field to execute the proper redirection.
@@ -23,7 +25,7 @@ defmodule RetrospectivexWeb.Retrospectives.BoardController do
 
             conn
             |> put_flash(:info, "Board created successfully.")
-            |> redirect(to: board_path(conn, :show, board.slug, u: board.uuid))
+            |> redirect(to: Routes.board_path(conn, :show, board.slug, u: board.uuid))
 
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "new.html", changeset: changeset)

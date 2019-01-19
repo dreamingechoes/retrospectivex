@@ -34,7 +34,7 @@
 
     <div class="card-footer">
       <%= submit gettext("Submit"), class: "btn btn-primary" %>
-      <%= link gettext("Back"), to: admin_administrator_path(@conn, :index), class: "btn btn-light" %>
+      <%= link gettext("Back"), to: Routes.admin_administrator_path(@conn, :index), class: "btn btn-light" %>
     </div>
   <% end %>
 </div>
