@@ -1,8 +1,8 @@
 # Versions
 #
 # Erlang: 1:21.0
-# Elixir: 1.7.2
-# Phoenix: 1.3.4
+# Elixir: 1.8.0
+# Phoenix: 1.4.0
 
 FROM ubuntu:18.04
 
@@ -32,7 +32,7 @@ ENV ERLANG_VERSION 1:21.0
 # Install Erlang
 RUN apt-get install -y esl-erlang=$ERLANG_VERSION && rm erlang-solutions_1.0_all.deb
 
-ENV ELIXIR_VERSION 1.7.2
+ENV ELIXIR_VERSION 1.8.0
 
 # Install Elixir
 RUN mkdir /opt/elixir \
@@ -45,10 +45,8 @@ RUN mkdir /opt/elixir \
   && ln -s /opt/elixir/bin/iex \
   && ln -s /opt/elixir/bin/mix
 
-ENV PHOENIX_VERSION 1.3.4
-
 # Install the Phoenix Mix archive
-RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new-$PHOENIX_VERSION.ez
+RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 
 # Install hex & rebar
 RUN mix local.hex --force && \

@@ -43,13 +43,16 @@ defmodule Retrospectivex.Mixfile do
   defp deps do
     [
       # Default Phoenix stuff
-      {:cowboy, "~> 1.1.2"},
-      {:gettext, "~> 0.13.1"},
-      {:phoenix, "~> 1.3.4", override: true},
-      {:phoenix_ecto, "~> 3.3.0"},
-      {:postgrex, ">= 0.13.3"},
-      {:phoenix_pubsub, "~> 1.0.2"},
-      {:ecto_enum, "~> 1.0"},
+      {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.7"},
+      {:gettext, "~> 0.16"},
+      {:phoenix, "~> 1.4.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:postgrex, "~> 0.14"},
+      {:phoenix_pubsub, "~> 1.1"},
+      {:ecto_enum, "~> 1.1.0"},
+      {:jason, "~> 1.0"},
 
       # Frontend
       {:phoenix_html, "~> 2.10.4"},
@@ -61,23 +64,23 @@ defmodule Retrospectivex.Mixfile do
       # Authentication
       {:comeonin, "~> 4.1.1"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:guardian, "~> 1.0"},
+      {:guardian, "~> 1.2"},
       {:oauth2, "~> 0.9"},
 
       # Code analysis
-      {:credo, "~> 0.9.0", only: [:dev, :test]},
+      {:credo, "~> 1.0", only: [:dev, :test]},
       {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false},
-      {:appsignal, "~> 1.0"},
+      {:appsignal, "~> 1.9"},
 
       # Code documentation
-      {:ex_doc, "~> 0.16.4", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
 
       # Google Recaptcha
       {:recaptcha, "~> 2.3"},
 
       # Testing and seeding data
-      {:faker, "~> 0.9.0"},
-      {:excoveralls, "~> 0.7.3", only: [:test]}
+      {:faker, "~> 0.11"},
+      {:excoveralls, "~> 0.10", only: [:test]}
     ]
   end
 
