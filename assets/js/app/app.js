@@ -11,6 +11,7 @@ import "select2/dist/js/select2"
 
 // Services
 import "./services/frankt"
+import "./services/intercooler-handler"
 import * as Accordion from "./services/accordion"
 import * as CodeMirror from "./services/codemirror"
 import * as Datepicker from "./services/datepicker"
