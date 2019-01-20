@@ -1,0 +1,14 @@
+[ic-action],
+[ic-custom-action],
+[ic-get-from] {
+  cursor: pointer !important;
+}
+
+.fade-in-out {
+  transition: all .9s;
+  opacity: 1;
+
+  &.ic-transitioning {
+    opacity: 0 !important;
+  }
+}
